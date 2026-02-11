@@ -3,812 +3,1064 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHL Mastery - Your First Paid Call Challenge</title>
+    <title>Your First $500 Paid Call Challenge | GHL Mastery</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0e1018;
-            --bg-gradient: linear-gradient(180deg, #0e1018 0%, #1a2a6c 50%, #0e1018 100%);
+            --primary-bg: #0e1018;
+            --secondary-bg: #1a3aad;
             --accent-blue: #2e5bff;
-            --accent-green: #02b828;
+            --accent-green: #04b828;
             --accent-orange: #f87e00;
-            --accent-red: #cc0000;
+            --accent-red: #e74c3c;
             --text-white: #ffffff;
             --text-light: #e0e0e0;
-            --text-dark: #333333;
+            --text-muted: #a0a0a0;
+            --border-blue: rgba(46, 91, 255, 0.3);
+            --gradient-bg: linear-gradient(180deg, #0e1018 0%, #1a2a6c 50%, #0e1018 100%);
         }
-        
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg-dark);
+            background: var(--primary-bg);
             color: var(--text-white);
             line-height: 1.6;
         }
-        
-        h1, h2, h3, h4 {
+
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
+            line-height: 1.2;
         }
-        
+
         /* Scrolling Proof Ticker */
         .proof-ticker {
-            background: #1a1a2e;
+            background: linear-gradient(90deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%);
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 8px 0;
+            padding: 10px 0;
             overflow: hidden;
             white-space: nowrap;
         }
-        
+
         .ticker-content {
-            display: inline-block;
-            animation: ticker 30s linear infinite;
+            display: inline-flex;
+            animation: ticker 35s linear infinite;
         }
-        
+
         .ticker-item {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            margin-right: 50px;
+            margin-right: 60px;
             font-size: 13px;
             color: var(--text-light);
         }
+
+        .ticker-item .amount { 
+            color: var(--accent-green); 
+            font-weight: 700;
+            font-size: 14px;
+        }
         
-        .ticker-item .name { color: var(--accent-green); font-weight: 600; }
-        
+        .ticker-item .name { 
+            color: var(--accent-blue); 
+            font-weight: 600; 
+        }
+
         @keyframes ticker {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
-        
-        /* Test Banner */
-        .test-banner {
-            background: var(--accent-orange);
-            color: white;
-            text-align: center;
-            padding: 8px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        
+
         /* Top Bar */
         .top-bar {
             background: white;
             padding: 12px 20px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
-        
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            font-size: 24px;
-            color: var(--bg-dark);
+
+        .top-bar img {
+            height: 45px;
         }
-        
-        .logo span { color: var(--accent-blue); }
-        
-        /* Hero */
+
+        .top-bar-badge {
+            background: var(--accent-green);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Hero Section */
         .hero {
-            background: var(--bg-gradient);
-            padding: 40px 20px 60px;
+            background: var(--gradient-bg);
+            padding: 50px 20px 70px;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.03)"/></svg>');
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
         .hero-grid {
-            max-width: 1100px;
+            max-width: 1170px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 380px;
-            gap: 40px;
+            grid-template-columns: 1fr 420px;
+            gap: 50px;
             align-items: start;
+            position: relative;
+            z-index: 1;
         }
-        
-        @media (max-width: 900px) {
+
+        @media (max-width: 1000px) {
             .hero-grid { grid-template-columns: 1fr; }
         }
-        
+
         .pre-head {
-            color: var(--accent-orange);
+            display: inline-block;
+            background: rgba(46, 91, 255, 0.2);
+            border: 1px solid rgba(46, 91, 255, 0.4);
+            color: var(--accent-blue);
+            padding: 8px 16px;
+            border-radius: 25px;
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
         }
-        
+
         .hero h1 {
-            font-size: 32px;
-            line-height: 1.2;
-            margin-bottom: 15px;
+            font-size: 38px;
+            margin-bottom: 20px;
+            line-height: 1.15;
         }
-        
-        .hero h1 .blue { color: var(--accent-blue); }
+
         .hero h1 .green { color: var(--accent-green); }
-        
+        .hero h1 .blue { color: var(--accent-blue); }
+        .hero h1 .orange { color: var(--accent-orange); }
+
         .hero-sub {
-            font-size: 16px;
+            font-size: 18px;
             color: var(--text-light);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             line-height: 1.7;
         }
-        
-        /* Video */
+
+        .hero-sub strong {
+            color: white;
+        }
+
+        /* Video Container */
         .video-wrap {
             position: relative;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 25px;
-            border: 2px solid var(--accent-blue);
+            margin-bottom: 30px;
+            border: 3px solid var(--accent-blue);
+            box-shadow: 0 20px 60px rgba(46, 91, 255, 0.3);
         }
-        
+
         .video-placeholder {
             aspect-ratio: 16/9;
             background: linear-gradient(135deg, #1a1a2e, #16213e);
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
-        
+
+        .video-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .play-btn {
-            width: 70px;
-            height: 70px;
-            background: white;
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.95);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
         }
-        
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+        }
+
         .play-btn::after {
             content: '';
-            border-left: 20px solid var(--accent-blue);
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
-            margin-left: 4px;
+            border-left: 22px solid var(--accent-blue);
+            border-top: 13px solid transparent;
+            border-bottom: 13px solid transparent;
+            margin-left: 5px;
         }
-        
-        .unmute-overlay {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.8);
+
+        /* Warning Banner */
+        .warning-banner {
+            background: linear-gradient(135deg, #cc0000, #990000);
             color: white;
-            padding: 10px 15px;
-            border-radius: 6px;
-            font-size: 12px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            cursor: pointer;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 500;
         }
-        
-        .unmute-overlay::before {
-            content: '🔇';
-            font-size: 16px;
+
+        .warning-banner .icon {
+            font-size: 24px;
         }
-        
-        /* Bullets */
-        .bullet-group { margin-bottom: 25px; }
-        
-        .bullet-group h3 {
+
+        /* Bullet Groups */
+        .bullet-section {
+            margin-bottom: 30px;
+        }
+
+        .bullet-header {
             font-size: 13px;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            padding-left: 2px;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            padding-left: 3px;
         }
-        
-        .bullet-group.pain h3 { color: var(--accent-red); }
-        .bullet-group.solution h3 { color: var(--accent-green); }
-        
+
+        .bullet-header.pain { color: var(--accent-red); }
+        .bullet-header.solution { color: var(--accent-green); }
+
         .bullets {
             list-style: none;
         }
-        
+
         .bullets li {
             display: flex;
             align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 10px;
-            font-size: 14px;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 15px;
             color: var(--text-light);
+            line-height: 1.5;
         }
-        
+
         .bullets li strong { color: white; }
-        
-        .icon { font-size: 14px; margin-top: 2px; }
-        .icon.red { color: var(--accent-red); }
-        .icon.green { color: var(--accent-green); }
-        
+
+        .bullet-icon {
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .bullet-icon.red { color: var(--accent-red); }
+        .bullet-icon.green { color: var(--accent-green); }
+
         /* Order Form */
         .order-form {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(46,91,255,0.3);
+            box-shadow: 0 25px 80px rgba(46, 91, 255, 0.4);
+            position: sticky;
+            top: 20px;
         }
-        
+
         .form-header {
-            background: var(--accent-blue);
+            background: linear-gradient(135deg, var(--accent-blue), #1a3aad);
             color: white;
             text-align: center;
-            padding: 15px;
+            padding: 18px;
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .form-body {
-            padding: 20px;
-            color: var(--text-dark);
+            padding: 25px;
+            color: #333;
         }
-        
-        /* Timer in form */
-        .form-timer {
+
+        /* Timer */
+        .timer-wrap {
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-        
+
         .timer-label {
             color: var(--accent-red);
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
         }
-        
+
         .timer {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            background: #fff0f0;
-            padding: 10px 18px;
-            border-radius: 8px;
+            gap: 8px;
+            background: #fff5f5;
+            padding: 12px 20px;
+            border-radius: 10px;
             border: 2px solid #ffe0e0;
         }
-        
+
         .timer-unit { text-align: center; }
+        
         .timer-val {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 800;
             color: var(--accent-red);
             font-family: 'Poppins', sans-serif;
-            min-width: 35px;
+            min-width: 40px;
         }
-        .timer-lbl { font-size: 9px; color: #999; text-transform: uppercase; }
-        .timer-sep { font-size: 20px; color: var(--accent-red); font-weight: 700; margin-bottom: 12px; }
         
-        /* Product preview in form */
+        .timer-lbl { 
+            font-size: 9px; 
+            color: #999; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .timer-sep { 
+            font-size: 24px; 
+            color: var(--accent-red); 
+            font-weight: 700; 
+            margin-bottom: 14px;
+        }
+
+        /* Product Preview */
         .product-preview {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
             text-align: center;
+            margin-bottom: 20px;
         }
-        
+
         .product-preview img {
             max-width: 100%;
-            border-radius: 6px;
-            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        
-        .product-preview h4 {
-            font-size: 14px;
-            color: var(--text-dark);
-            margin-bottom: 5px;
-        }
-        
-        /* Price */
+
+        /* Price Display */
         .price-box {
             text-align: center;
-            padding: 15px;
-            background: linear-gradient(135deg, #f0fff0 0%, #e8ffe8 100%);
-            border-radius: 10px;
-            margin-bottom: 15px;
-            border: 2px solid rgba(2,184,40,0.2);
+            margin-bottom: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 12px;
         }
-        
+
         .price-old {
-            font-size: 18px;
+            font-size: 20px;
             color: #999;
             text-decoration: line-through;
         }
-        
+
         .price-new {
-            font-size: 48px;
+            font-size: 52px;
             font-weight: 900;
             color: var(--accent-green);
             font-family: 'Poppins', sans-serif;
             line-height: 1;
+            margin: 5px 0;
         }
-        
+
         .price-note {
-            font-size: 12px;
+            font-size: 13px;
             color: #666;
-            margin-top: 5px;
         }
-        
-        /* Form steps */
+
+        /* Form Steps */
         .form-steps {
             display: flex;
-            background: #f0f0f0;
-            border-radius: 8px;
-            margin-bottom: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
             overflow: hidden;
         }
-        
+
         .step {
             flex: 1;
-            padding: 12px 8px;
+            padding: 12px;
             text-align: center;
-            font-size: 11px;
+            font-size: 12px;
             color: #999;
+            transition: all 0.3s;
         }
-        
+
         .step.active {
             background: white;
-            color: var(--text-dark);
+            color: #333;
             font-weight: 600;
         }
-        
+
         .step-num {
             display: block;
             font-size: 9px;
-            color: #bbb;
+            color: var(--accent-blue);
+            font-weight: 700;
             margin-bottom: 2px;
         }
-        
-        .step.active .step-num { color: var(--accent-blue); }
-        
+
         .step-divider {
-            width: 28px;
-            height: 28px;
+            width: 30px;
+            height: 30px;
             background: var(--accent-orange);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 12px;
-            margin: auto -14px;
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0 -15px;
+            position: relative;
             z-index: 1;
         }
-        
-        /* Form fields */
-        .field {
-            margin-bottom: 12px;
+
+        /* Form Fields */
+        .form-group {
+            margin-bottom: 15px;
         }
-        
-        .field label {
+
+        .form-group label {
             display: block;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--text-dark);
-        }
-        
-        .field input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-        
-        .field input:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-        }
-        
-        /* Order bump */
-        .bump {
-            border: 2px solid var(--accent-green);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px 0;
-            background: #fcfffc;
-            position: relative;
-        }
-        
-        .bump-tag {
-            position: absolute;
-            top: -10px;
-            left: 12px;
-            background: var(--accent-green);
-            color: white;
-            font-size: 9px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 4px;
-        }
-        
-        .bump-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-top: 5px;
-        }
-        
-        .bump input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            margin-top: 2px;
-            accent-color: var(--accent-green);
-        }
-        
-        .bump-title {
             font-size: 13px;
             font-weight: 600;
-            color: var(--text-dark);
+            color: #333;
+            margin-bottom: 6px;
         }
-        
-        .bump-price { color: var(--accent-green); font-weight: 700; }
-        
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(46, 91, 255, 0.1);
+        }
+
+        /* Order Bump */
+        .order-bump {
+            border: 2px dashed var(--accent-green);
+            border-radius: 12px;
+            padding: 18px;
+            margin: 20px 0;
+            background: linear-gradient(135deg, #f0fff4, #e6ffed);
+            position: relative;
+        }
+
+        .bump-badge {
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: var(--accent-green);
+            color: white;
+            padding: 5px 12px;
+            font-size: 10px;
+            font-weight: 800;
+            border-radius: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .bump-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            margin-top: 5px;
+        }
+
+        .bump-checkbox {
+            width: 22px;
+            height: 22px;
+            accent-color: var(--accent-green);
+        }
+
+        .bump-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .bump-price { color: var(--accent-green); }
+
         .bump-desc {
-            font-size: 12px;
-            color: #666;
-            margin-top: 8px;
-            margin-left: 28px;
+            font-size: 13px;
+            color: #555;
             line-height: 1.5;
         }
-        
-        /* Submit button */
+
+        /* Submit Button */
         .submit-btn {
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--accent-orange), #ff9500);
+            padding: 20px;
+            background: linear-gradient(135deg, var(--accent-orange), #e06c00);
             border: none;
             border-radius: 50px;
             color: white;
-            font-size: 16px;
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: 800;
             font-family: 'Poppins', sans-serif;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 6px 25px rgba(248,126,0,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        
+
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 35px rgba(248,126,0,0.5);
+            box-shadow: 0 15px 40px rgba(248, 126, 0, 0.4);
         }
-        
+
         .submit-sub {
             text-align: center;
-            font-size: 11px;
+            font-size: 12px;
             color: #999;
-            margin-top: 10px;
+            margin-top: 12px;
         }
-        
-        .badges {
+
+        /* Trust Badges */
+        .trust-badges {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            margin-top: 12px;
+            gap: 10px;
+            margin-top: 15px;
             flex-wrap: wrap;
         }
-        
-        .badge {
-            background: #f5f5f5;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 10px;
-            color: #666;
+
+        .trust-badges img {
+            height: 35px;
+            opacity: 0.8;
         }
-        
-        /* Content Sections */
+
+        /* Sections */
         .section {
-            padding: 60px 20px;
+            padding: 70px 20px;
         }
-        
+
+        .section-dark {
+            background: rgba(0,0,0,0.4);
+        }
+
         .section-white {
             background: white;
-            color: var(--text-dark);
+            color: #333;
         }
-        
-        .section-dark {
-            background: var(--bg-dark);
+
+        .section-gradient {
+            background: var(--gradient-bg);
         }
-        
+
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
-        
+
         .section-title {
-            font-size: 28px;
+            font-size: 36px;
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-        
-        .section-title .blue { color: var(--accent-blue); }
+
         .section-title .green { color: var(--accent-green); }
-        
+        .section-title .blue { color: var(--accent-blue); }
+
         .section-sub {
             text-align: center;
-            font-size: 16px;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-        
-        .section-dark .section-sub { color: var(--text-light); }
-        
-        /* Challenge Steps */
-        .challenge-steps {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-            margin: 40px 0;
-        }
-        
-        @media (max-width: 700px) {
-            .challenge-steps { grid-template-columns: 1fr; }
-        }
-        
-        .challenge-day {
-            background: rgba(46,91,255,0.1);
-            border: 2px solid rgba(46,91,255,0.2);
-            border-radius: 12px;
-            padding: 20px 15px;
-            text-align: center;
-        }
-        
-        .day-num {
-            background: var(--accent-blue);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            margin: 0 auto 10px;
-            font-size: 14px;
-        }
-        
-        .day-title {
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .day-desc {
-            font-size: 11px;
+            font-size: 18px;
             color: var(--text-light);
-            line-height: 1.4;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        /* Testimonials */
-        .testimonials {
+
+        .section-white .section-sub {
+            color: #666;
+        }
+
+        /* Results Cards */
+        .results-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
         }
-        
-        .testimonial {
+
+        @media (max-width: 800px) {
+            .results-grid { grid-template-columns: 1fr; }
+        }
+
+        .result-card {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .result-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .result-content {
             padding: 25px;
         }
-        
-        .testimonial-result {
-            font-size: 22px;
+
+        .result-amount {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
             font-weight: 800;
             color: var(--accent-green);
             margin-bottom: 10px;
         }
-        
-        .testimonial-text {
-            font-size: 14px;
-            color: var(--text-light);
+
+        .result-quote {
             font-style: italic;
+            color: var(--text-light);
+            font-size: 14px;
             margin-bottom: 15px;
             line-height: 1.6;
         }
-        
-        .testimonial-author {
+
+        .result-author {
             font-weight: 600;
+            color: white;
             font-size: 14px;
         }
-        
-        .testimonial-role {
+
+        .result-role {
+            color: var(--text-muted);
             font-size: 12px;
-            color: var(--text-light);
         }
-        
-        /* Included items */
-        .included-grid {
+
+        /* Challenge Steps */
+        .steps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(5, 1fr);
             gap: 20px;
         }
-        
-        .included-item {
-            display: flex;
-            gap: 15px;
-            padding: 20px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
+
+        @media (max-width: 900px) {
+            .steps-grid { 
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
-        
-        .included-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--accent-blue);
-            border-radius: 10px;
+
+        @media (max-width: 500px) {
+            .steps-grid { 
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-blue), #1a3aad);
+            color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            margin: 0 auto 15px;
         }
-        
-        .included-content h4 {
-            font-size: 15px;
-            margin-bottom: 5px;
+
+        .step-card h4 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
         }
-        
-        .included-content p {
+
+        .step-card p {
             font-size: 13px;
-            color: var(--text-light);
+            color: #666;
             line-height: 1.5;
         }
-        
-        .included-value {
-            font-size: 12px;
-            color: var(--accent-green);
-            font-weight: 600;
-            margin-top: 8px;
+
+        /* What's Included */
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
         }
-        
+
+        @media (max-width: 700px) {
+            .included-grid { grid-template-columns: 1fr; }
+        }
+
+        .included-card {
+            display: flex;
+            gap: 20px;
+            padding: 25px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .included-card:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .included-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-blue), #1a3aad);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .included-content h4 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .included-content p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .included-value {
+            font-size: 13px;
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        /* Proof Gallery */
+        .proof-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .proof-gallery { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .proof-gallery img {
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .proof-gallery img:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-green);
+        }
+
         /* Guarantee */
         .guarantee {
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 35px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(4, 184, 40, 0.1);
             border: 2px solid var(--accent-green);
-            border-radius: 16px;
-            text-align: center;
+            border-radius: 20px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
         }
-        
-        .guarantee-icon { font-size: 40px; margin-bottom: 10px; }
-        
+
+        @media (max-width: 600px) {
+            .guarantee { 
+                flex-direction: column; 
+                text-align: center;
+            }
+        }
+
+        .guarantee-badge {
+            flex-shrink: 0;
+        }
+
+        .guarantee-badge img {
+            width: 120px;
+        }
+
         .guarantee h3 {
             color: var(--accent-green);
-            font-size: 22px;
+            font-size: 24px;
             margin-bottom: 12px;
         }
-        
+
         .guarantee p {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--text-light);
             line-height: 1.7;
         }
-        
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            padding: 70px 20px;
-            background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(46,91,255,0.1) 100%);
+
+        /* About Author */
+        .author-section {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
-        
+
+        @media (max-width: 700px) {
+            .author-section { 
+                flex-direction: column; 
+                text-align: center;
+            }
+        }
+
+        .author-image {
+            flex-shrink: 0;
+        }
+
+        .author-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-blue);
+            object-fit: cover;
+        }
+
+        .author-content h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .author-content h3 span {
+            color: var(--accent-blue);
+        }
+
+        .author-content p {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, var(--primary-bg) 0%, rgba(46, 91, 255, 0.15) 100%);
+        }
+
         .cta-btn {
             display: inline-block;
-            padding: 20px 60px;
+            padding: 22px 70px;
             background: linear-gradient(135deg, var(--accent-green), #05d632);
             color: white;
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 20px;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
             text-decoration: none;
             border-radius: 50px;
-            box-shadow: 0 10px 40px rgba(2,184,40,0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        
+
         .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(2,184,40,0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(4, 184, 40, 0.5);
         }
-        
+
         .cta-sub {
-            margin-top: 15px;
-            font-size: 14px;
+            margin-top: 20px;
+            font-size: 15px;
             color: var(--text-light);
         }
-        
+
         /* Footer */
         .footer {
             text-align: center;
-            padding: 30px 20px;
-            font-size: 11px;
+            padding: 40px 20px;
+            font-size: 12px;
             color: #666;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            background: #0a0a0f;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer p {
+            margin-bottom: 8px;
+        }
+
+        .footer a {
+            color: #888;
         }
     </style>
 </head>
 <body>
-    <!-- Test Banner -->
-    <div class="test-banner">🧪 TEST MODE — Click through to experience the full funnel</div>
-    
     <!-- Scrolling Proof Ticker -->
     <div class="proof-ticker">
         <div class="ticker-content">
-            <span class="ticker-item">🎉 <span class="name">Nick D.</span> just booked a $500 AOF call</span>
-            <span class="ticker-item">🎉 <span class="name">Sarah M.</span> closed her first $10K system build</span>
-            <span class="ticker-item">🎉 <span class="name">Marcus T.</span> just joined the challenge</span>
-            <span class="ticker-item">🎉 <span class="name">KP</span> hit $10K/month with AOF</span>
-            <span class="ticker-item">🎉 <span class="name">James R.</span> booked 3 paid calls this week</span>
-            <span class="ticker-item">🎉 <span class="name">Amanda K.</span> just closed a $15K deal</span>
-            <span class="ticker-item">🎉 <span class="name">Nick D.</span> just booked a $500 AOF call</span>
-            <span class="ticker-item">🎉 <span class="name">Sarah M.</span> closed her first $10K system build</span>
-            <span class="ticker-item">🎉 <span class="name">Marcus T.</span> just joined the challenge</span>
-            <span class="ticker-item">🎉 <span class="name">KP</span> hit $10K/month with AOF</span>
-            <span class="ticker-item">🎉 <span class="name">James R.</span> booked 3 paid calls this week</span>
-            <span class="ticker-item">🎉 <span class="name">Amanda K.</span> just closed a $15K deal</span>
+            <span class="ticker-item">🎉 <span class="name">KP</span> just hit <span class="amount">$10K/month</span> with AOF</span>
+            <span class="ticker-item">💰 <span class="name">Ali</span> closed an <span class="amount">$8,000</span> custom build</span>
+            <span class="ticker-item">🔥 <span class="name">Kenzie</span> made <span class="amount">$10K</span> selling AOF docs</span>
+            <span class="ticker-item">✅ <span class="name">Marcus</span> just booked his first <span class="amount">$500</span> paid call</span>
+            <span class="ticker-item">🚀 <span class="name">Jim</span> solved a 3-hour problem in <span class="amount">30 seconds</span></span>
+            <span class="ticker-item">💵 <span class="name">Sarah</span> closed a <span class="amount">$15K</span> system build</span>
+            <span class="ticker-item">🎉 <span class="name">KP</span> just hit <span class="amount">$10K/month</span> with AOF</span>
+            <span class="ticker-item">💰 <span class="name">Ali</span> closed an <span class="amount">$8,000</span> custom build</span>
+            <span class="ticker-item">🔥 <span class="name">Kenzie</span> made <span class="amount">$10K</span> selling AOF docs</span>
+            <span class="ticker-item">✅ <span class="name">Marcus</span> just booked his first <span class="amount">$500</span> paid call</span>
+            <span class="ticker-item">🚀 <span class="name">Jim</span> solved a 3-hour problem in <span class="amount">30 seconds</span></span>
+            <span class="ticker-item">💵 <span class="name">Sarah</span> closed a <span class="amount">$15K</span> system build</span>
         </div>
     </div>
-    
+
     <!-- Top Bar -->
     <div class="top-bar">
-        <img src="../assets/images/ghl-logo.png" alt="GHL Mastery" style="height: 40px;">
+        <img src="./assets/images/ghl-logo.png" alt="GHL Mastery">
+        <span class="top-bar-badge">Official Training</span>
     </div>
-    
-    <!-- Hero -->
+
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-grid">
+            <!-- Left Column -->
             <div class="hero-content">
-                <p class="pre-head">A Challenge For GHL Agency Owners Ready To Level Up</p>
-                <h1>I Challenge You To Book Your First <span class="green">$500 Paid Discovery Call</span></h1>
-                <p class="hero-sub">Stop giving away free consultations that go nowhere. This is the <strong>exact framework</strong> to charge $500 for your discovery calls — and I'm challenging you to go book one.</p>
+                <span class="pre-head">⚡ For GHL Agency Owners Who Are Done Working For Free</span>
                 
+                <h1>Stop Giving Away <span class="orange">Free Discovery Calls</span> That Go Nowhere...</h1>
+                
+                <h2 style="font-size: 28px; margin-bottom: 25px;">I Challenge You To Book Your First <span class="green">$500 Paid Call</span> Using This Exact Framework</h2>
+                
+                <p class="hero-sub">
+                    What if your next "discovery call" <strong>paid you $500</strong> instead of wasting your afternoon? 
+                    What if prospects actually <strong>showed up prepared</strong> — and <strong>ready to buy</strong>?
+                </p>
+
                 <!-- Video -->
                 <div class="video-wrap">
                     <div class="video-placeholder">
+                        <img src="./assets/images/mockup-1.png" alt="First Paid Call Framework">
                         <div class="play-btn"></div>
                     </div>
-                    <div class="unmute-overlay">
-                        <span>Your Video Is Playing</span>
-                        <span style="font-weight: 600;">Click To Unmute</span>
-                    </div>
                 </div>
-                
+
+                <!-- Warning Banner -->
+                <div class="warning-banner">
+                    <span class="icon">⚠️</span>
+                    <span><strong>Reality check:</strong> Every free call you give away is $500 you're leaving on the table. The agencies closing $15K+ deals? They get paid just to show up.</span>
+                </div>
+
                 <!-- Pain Points -->
-                <div class="bullet-group pain">
-                    <h3>This Challenge Is For You If...</h3>
+                <div class="bullet-section">
+                    <div class="bullet-header pain">✖ Sound Familiar?</div>
                     <ul class="bullets">
-                        <li><span class="icon red">✖</span><span>You're giving away <strong>free discovery calls</strong> that waste your time</span></li>
-                        <li><span class="icon red">✖</span><span>Prospects ghost you after you send the proposal</span></li>
-                        <li><span class="icon red">✖</span><span>You feel like a <strong>software vendor</strong> competing on price</span></li>
-                        <li><span class="icon red">✖</span><span>You know you should charge more but don't know how to justify it</span></li>
+                        <li>
+                            <span class="bullet-icon red">✖</span>
+                            <span>You hop on "free consultations" and prospects <strong>ghost you</strong> after you send the proposal</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon red">✖</span>
+                            <span>You're competing on <strong>price</strong> like a commodity vendor instead of a trusted advisor</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon red">✖</span>
+                            <span>Prospects treat you like a <strong>tech support guy</strong> — not a strategic consultant worth $15K+</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon red">✖</span>
+                            <span>You KNOW you should charge more, but you <strong>don't know how to justify it</strong></span>
+                        </li>
                     </ul>
                 </div>
-                
+
                 <!-- Solution Points -->
-                <div class="bullet-group solution">
-                    <h3>What You'll Walk Away With...</h3>
+                <div class="bullet-section">
+                    <div class="bullet-header solution">✓ After This Challenge, You'll...</div>
                     <ul class="bullets">
-                        <li><span class="icon green">✓</span><span>The exact script to <strong>charge $500</strong> for your discovery calls</span></li>
-                        <li><span class="icon green">✓</span><span>Position yourself as a <strong>systems consultant</strong>, not a vendor</span></li>
-                        <li><span class="icon green">✓</span><span>Have prospects <strong>chase you</strong> instead of the other way around</span></li>
-                        <li><span class="icon green">✓</span><span>Feel <strong>confident</strong> pitching $5K-$25K system builds</span></li>
+                        <li>
+                            <span class="bullet-icon green">✓</span>
+                            <span>Get <strong>paid $500</strong> just to have a discovery call — paid to diagnose, not pitch</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon green">✓</span>
+                            <span>Position yourself as a <strong>systems consultant</strong> that businesses actually need</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon green">✓</span>
+                            <span>Have prospects <strong>chase you</strong> — because you're not desperate for the deal</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon green">✓</span>
+                            <span>Close <strong>$5K-$25K builds</strong> with confidence (because they already paid to hear your solution)</span>
+                        </li>
                     </ul>
                 </div>
             </div>
-            
-            <!-- Order Form -->
+
+            <!-- Right Column - Order Form -->
             <div class="order-form">
-                <div class="form-header">🎯 ACCEPT THE CHALLENGE</div>
+                <div class="form-header">
+                    🎯 Accept The Challenge — Get Instant Access
+                </div>
                 <div class="form-body">
                     <!-- Timer -->
-                    <div class="form-timer">
+                    <div class="timer-wrap">
                         <div class="timer-label">⚡ Special Pricing Ends In:</div>
                         <div class="timer">
                             <div class="timer-unit">
@@ -827,15 +1079,15 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Price -->
                     <div class="price-box">
                         <div class="price-old">$197</div>
                         <div class="price-new">$47</div>
-                        <div class="price-note">One-time • Lifetime access</div>
+                        <div class="price-note">One-time payment • Lifetime access</div>
                     </div>
-                    
-                    <!-- Steps -->
+
+                    <!-- Form Steps -->
                     <div class="form-steps">
                         <div class="step active">
                             <span class="step-num">STEP 1</span>
@@ -847,207 +1099,259 @@
                             Payment
                         </div>
                     </div>
-                    
+
                     <!-- Form -->
-                    <form action="upsell-1.html">
-                        <div class="field">
-                            <label>Full Name</label>
-                            <input type="text" value="John Smith" placeholder="Your name...">
+                    <form>
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" placeholder="Your full name...">
                         </div>
-                        <div class="field">
-                            <label>Email</label>
-                            <input type="email" value="john@example.com" placeholder="Your email...">
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" placeholder="Your best email...">
                         </div>
-                        <div class="field">
-                            <label>Phone</label>
-                            <input type="tel" value="(555) 123-4567" placeholder="Your phone...">
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="Your phone number...">
                         </div>
-                        
-                        <!-- Bump -->
-                        <div class="bump">
-                            <span class="bump-tag">🔥 FAST-ACTION BONUS</span>
+
+                        <!-- Order Bump -->
+                        <div class="order-bump">
+                            <span class="bump-badge">🔥 Most Popular</span>
                             <div class="bump-header">
-                                <input type="checkbox" id="bump">
-                                <label class="bump-title" for="bump">YES! Add <span class="bump-price">VIP Community Access (+$27)</span></label>
+                                <input type="checkbox" class="bump-checkbox" id="bump">
+                                <label class="bump-title" for="bump">YES! Add the <span class="bump-price">Implementation Stack (+$97)</span></label>
                             </div>
-                            <p class="bump-desc">Get 30 days of VIP community access. Ask questions, get feedback, and connect with 7-figure consultants during your challenge.</p>
+                            <p class="bump-desc">Get our done-for-you templates: proposal docs, scoping worksheets, and follow-up sequences used by agencies closing $15K+ deals. <strong>Save 20+ hours of setup.</strong></p>
                         </div>
-                        
-                        <button type="submit" class="submit-btn">Join The Challenge — $47 →</button>
-                        <p class="submit-sub">🔒 Secure checkout • Instant access</p>
-                        
-                        <div class="badges">
-                            <span class="badge">🔒 256-bit SSL</span>
-                            <span class="badge">💳 Secure</span>
-                            <span class="badge">✓ Guaranteed</span>
+
+                        <!-- Submit -->
+                        <button type="submit" class="submit-btn">
+                            Start The Challenge Now →
+                        </button>
+                        <p class="submit-sub">🔒 Secure 256-bit SSL encryption • 30-day guarantee</p>
+
+                        <!-- Trust Badges -->
+                        <div class="trust-badges">
+                            <img src="./assets/images/payment-badge.png" alt="Secure Payment">
+                            <img src="./assets/images/ghl-badge.png" alt="GHL Certified">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- The Framework Section -->
-    <section class="section section-white">
-        <div class="container">
-            <h2 class="section-title" style="color: var(--text-dark);">The <span class="blue">Complete Framework</span> To Book Your First <span class="green">$500 Call</span></h2>
-            <p class="section-sub">Everything you need to go from free consultations to paid discovery calls — delivered in 5 action-packed modules.</p>
-            
-            <div class="challenge-steps">
-                <div class="challenge-day">
-                    <div class="day-num">1</div>
-                    <div class="day-title">The Mindset Shift</div>
-                    <div class="day-desc">Why free calls kill your business & the consultant positioning that changes everything</div>
-                </div>
-                <div class="challenge-day">
-                    <div class="day-num">2</div>
-                    <div class="day-title">The AOF Framework</div>
-                    <div class="day-desc">The 3-step system: Assessment → Operations → Framework delivery</div>
-                </div>
-                <div class="challenge-day">
-                    <div class="day-num">3</div>
-                    <div class="day-title">The $500 Script</div>
-                    <div class="day-desc">Exactly what to say to position and close paid discovery calls</div>
-                </div>
-                <div class="challenge-day">
-                    <div class="day-num">4</div>
-                    <div class="day-title">The Pitch</div>
-                    <div class="day-desc">How to introduce paid discovery to your prospects (without feeling salesy)</div>
-                </div>
-                <div class="challenge-day">
-                    <div class="day-num">5</div>
-                    <div class="day-title">Take Action</div>
-                    <div class="day-desc">Put it all together and challenge yourself to book your first $500 call</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
+
     <!-- Results Section -->
     <section class="section section-dark">
         <div class="container">
-            <h2 class="section-title">Results From <span class="green">AOF Users</span></h2>
-            <p class="section-sub">Agency owners just like you are booking paid calls and closing high-ticket deals.</p>
-            
-            <div class="testimonials">
-                <div class="testimonial">
-                    <div class="testimonial-result">$64,000 in 6 weeks</div>
-                    <p class="testimonial-text">"Before AOF, I was giving away free audits hoping someone would hire me. Now prospects pay me $500 just to tell them what's wrong."</p>
-                    <p class="testimonial-author">Nick D.</p>
-                    <p class="testimonial-role">Agency Owner</p>
+            <h2 class="section-title">Real Results From <span class="green">Real Agency Owners</span></h2>
+            <p class="section-sub">These aren't hypotheticals. These are actual GHL agency owners who went from free calls to paid consulting.</p>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <img src="./assets/testimonials/client-1.jpeg" alt="KP" class="result-image">
+                    <div class="result-content">
+                        <div class="result-amount">$10,000/month</div>
+                        <p class="result-quote">"I'm making five figures without doing five figures worth of work. When I charge $500 per call to build infrastructures that Adam gave me the blueprint of... it's literal conversations, not sales."</p>
+                        <p class="result-author">Kenzie</p>
+                        <p class="result-role">Elevation Academy</p>
+                    </div>
                 </div>
-                <div class="testimonial">
-                    <div class="testimonial-result">$10K/month selling docs</div>
-                    <p class="testimonial-text">"AOF taught me to sell the diagnosis, then hand off the build. My margins went from 20% to 60%."</p>
-                    <p class="testimonial-author">KP</p>
-                    <p class="testimonial-role">Systems Consultant</p>
+                <div class="result-card">
+                    <img src="./assets/testimonials/client-2.jpeg" alt="Ali" class="result-image">
+                    <div class="result-content">
+                        <div class="result-amount">$8,000 Build</div>
+                        <p class="result-quote">"A payment of almost $8,000 today for a custom build that I did for a customer that Adam and Brendan taught within the VIP group on how to do. Best money I've ever spent."</p>
+                        <p class="result-author">Ali</p>
+                        <p class="result-role">Amaze360</p>
+                    </div>
                 </div>
-                <div class="testimonial">
-                    <div class="testimonial-result">First $15K deal</div>
-                    <p class="testimonial-text">"The reframe of 'that's a $360K/year problem' completely changed how prospects see my value."</p>
-                    <p class="testimonial-author">Marcus T.</p>
-                    <p class="testimonial-role">GHL Agency Owner</p>
+                <div class="result-card">
+                    <img src="./assets/testimonials/client-3.jpeg" alt="Jim" class="result-image">
+                    <div class="result-content">
+                        <div class="result-amount">3 Hours → 30 Seconds</div>
+                        <p class="result-quote">"I wasted 3 hours on a Zoom call with GHL support. Adam and Brendan literally solved it in 30 seconds. I get to walk around and enjoy life rather than sitting in a waiting room."</p>
+                        <p class="result-author">Jim Horsey</p>
+                        <p class="result-role">GHL Agency Owner</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proof Gallery -->
+            <div class="proof-gallery">
+                <img src="./assets/images/proof-1.jpeg" alt="Client Result">
+                <img src="./assets/images/proof-2.jpeg" alt="Client Result">
+                <img src="./assets/images/proof-3.jpeg" alt="Client Result">
+                <img src="./assets/images/proof-4.jpeg" alt="Client Result">
+            </div>
+        </div>
+    </section>
+
+    <!-- The Framework Section -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-title" style="color: #333;">The <span class="blue">AOF Framework</span>: Your Path To Paid Calls</h2>
+            <p class="section-sub">Five modules. Everything you need. No fluff. Just the exact system agencies use to charge $500 for discovery calls.</p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>The Mindset Shift</h4>
+                    <p>Why free calls kill your business & the positioning that changes everything</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>The AOF Model</h4>
+                    <p>Assessment → Operations → Framework. The 3-step system that commands premium fees.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>The $500 Script</h4>
+                    <p>Word-for-word what to say to position and close paid discovery calls</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4>The Pitch</h4>
+                    <p>How to introduce paid discovery without feeling salesy or awkward</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <h4>Take Action</h4>
+                    <p>Challenge yourself: Book your first $500 call this week</p>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- What's Included -->
-    <section class="section section-dark">
+    <section class="section section-gradient">
         <div class="container">
-            <h2 class="section-title">Everything In The <span class="blue">Challenge</span></h2>
-            
+            <h2 class="section-title">Everything You Get <span class="green">Today</span></h2>
+            <p class="section-sub">This isn't just training. It's a complete toolkit for commanding premium consulting fees.</p>
+
             <div class="included-grid">
-                <div class="included-item">
+                <div class="included-card">
                     <div class="included-icon">🎯</div>
                     <div class="included-content">
-                        <h4>5 Daily Training Videos</h4>
-                        <p>Bite-sized lessons you can complete in under 30 minutes each day.</p>
-                        <div class="included-value">Value: $497</div>
+                        <h4>5 Core Training Modules</h4>
+                        <p>Comprehensive video training covering mindset, positioning, scripting, and execution. Watch once, implement forever.</p>
+                        <span class="included-value">Value: $497</span>
                     </div>
                 </div>
-                <div class="included-item">
-                    <div class="included-icon">💬</div>
+                <div class="included-card">
+                    <div class="included-icon">📝</div>
                     <div class="included-content">
                         <h4>The $500 Call Script</h4>
-                        <p>Word-for-word what to say to position and close paid discovery calls.</p>
-                        <div class="included-value">Value: $297</div>
+                        <p>Word-for-word script for positioning paid discovery calls. Just fill in your details and use it today.</p>
+                        <span class="included-value">Value: $297</span>
                     </div>
                 </div>
-                <div class="included-item">
+                <div class="included-card">
                     <div class="included-icon">📧</div>
                     <div class="included-content">
                         <h4>Outreach Templates</h4>
-                        <p>Copy-paste messages to reach out to prospects and offer paid discovery.</p>
-                        <div class="included-value">Value: $197</div>
+                        <p>Copy-paste email and DM templates to reach out and offer paid discovery. Tested and proven.</p>
+                        <span class="included-value">Value: $197</span>
                     </div>
                 </div>
-                <div class="included-item">
+                <div class="included-card">
                     <div class="included-icon">🧮</div>
                     <div class="included-content">
                         <h4>Problem Quantifier Framework</h4>
-                        <p>Turn their "$30K/month problem" into a "$360K/year emergency."</p>
-                        <div class="included-value">Value: $197</div>
+                        <p>Turn a "$30K problem" into a "$360K/year emergency" that demands immediate action.</p>
+                        <span class="included-value">Value: $197</span>
                     </div>
                 </div>
-                <div class="included-item">
+                <div class="included-card">
                     <div class="included-icon">🎬</div>
                     <div class="included-content">
                         <h4>Live Call Recordings</h4>
-                        <p>Watch real AOF calls in action. See exactly how it's done.</p>
-                        <div class="included-value">Value: $297</div>
+                        <p>Watch real AOF calls in action. See exactly how top consultants position and close paid calls.</p>
+                        <span class="included-value">Value: $297</span>
                     </div>
                 </div>
-                <div class="included-item">
+                <div class="included-card">
                     <div class="included-icon">👥</div>
                     <div class="included-content">
                         <h4>Challenge Community</h4>
-                        <p>Connect with other challengers. Share wins. Get support.</p>
-                        <div class="included-value">Value: Priceless</div>
+                        <p>Connect with other agency owners taking the challenge. Share wins, get feedback, stay accountable.</p>
+                        <span class="included-value">Value: Priceless</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Guarantee -->
+
+    <!-- About Section -->
     <section class="section section-dark">
         <div class="container">
-            <div class="guarantee">
-                <div class="guarantee-icon">🛡️</div>
-                <h3>The "First $500 Call" Guarantee</h3>
-                <p>Complete the training and reach out to at least 5 prospects using the framework. If you don't book a single paid discovery call, we'll personally review your approach and help you fix it — or give you a full refund.</p>
+            <div class="author-section">
+                <div class="author-image">
+                    <img src="./assets/images/adam-photo.jpeg" alt="Adam McInnes">
+                </div>
+                <div class="author-content">
+                    <h3>Your Host: <span>Adam McInnes</span></h3>
+                    <p>Adam is the co-founder of GHL Mastery and has helped hundreds of agency owners transform from "GHL tech guys" into high-paid systems consultants.</p>
+                    <p>His VIP members consistently close $10K-$25K builds — not by selling harder, but by positioning smarter. The AOF framework is the exact system they use.</p>
+                    <p><strong>"If you're still giving away free calls, you're not running a consulting business. You're running a free advice hotline."</strong></p>
+                </div>
             </div>
         </div>
     </section>
-    
-    <!-- Final CTA -->
-    <section class="cta-section">
-        <h2 class="section-title">Ready To Book Your First <span class="green">$500 Call?</span></h2>
-        <p style="max-width: 500px; margin: 0 auto 30px; color: var(--text-light);">Join hundreds of GHL agency owners who stopped giving away free consultations.</p>
-        <a href="#" class="cta-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Join The Challenge — $47 →</a>
-        <p class="cta-sub">🔒 Secure checkout • Instant access • 30-day guarantee</p>
+
+    <!-- Guarantee -->
+    <section class="section section-gradient">
+        <div class="container">
+            <div class="guarantee">
+                <div class="guarantee-badge">
+                    <img src="./assets/testimonials/guarantee.png" alt="30-Day Guarantee">
+                </div>
+                <div>
+                    <h3>The "First $500 Call" Guarantee</h3>
+                    <p>Complete the training. Use the scripts. Reach out to at least 5 prospects. If you don't book a single paid discovery call in 30 days, we'll personally review your approach and fix it — or give you a full refund. No questions. No hassle. You either get results or you get your money back.</p>
+                </div>
+            </div>
+        </div>
     </section>
-    
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2 class="section-title">Ready To Stop Working For Free?</h2>
+        <p style="max-width: 600px; margin: 0 auto 35px; color: var(--text-light); font-size: 18px;">
+            Join hundreds of GHL agency owners who've made the shift from free consultations to $500+ paid discovery calls.
+        </p>
+        <a href="#" class="cta-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+            Accept The Challenge — $47 →
+        </a>
+        <p class="cta-sub">🔒 Secure checkout • Instant access • 30-day money-back guarantee</p>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <p>© 2026 GHL Mastery by RhinoMouse Marketing Inc. All Rights Reserved.</p>
+        <p><a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a> • <a href="#">Contact</a></p>
+        <p style="margin-top: 15px; font-size: 10px; color: #555;">This site is not a part of the GoHighLevel™ website or GoHighLevel™ Inc. Additionally, this site is NOT endorsed by GoHighLevel™ in any way. GoHighLevel™ is a trademark of GoHighLevel™, Inc.</p>
     </footer>
-    
+
+    <!-- Timer Script -->
     <script>
         function updateTimer() {
-            const h = document.getElementById('hours');
-            const m = document.getElementById('minutes');
-            const s = document.getElementById('seconds');
-            let hrs = parseInt(h.textContent), min = parseInt(m.textContent), sec = parseInt(s.textContent);
-            sec--;
-            if (sec < 0) { sec = 59; min--; }
-            if (min < 0) { min = 59; hrs--; }
-            if (hrs < 0) { hrs = 0; min = 0; sec = 0; }
-            h.textContent = hrs.toString().padStart(2, '0');
-            m.textContent = min.toString().padStart(2, '0');
-            s.textContent = sec.toString().padStart(2, '0');
+            const now = new Date();
+            const midnight = new Date();
+            midnight.setHours(24, 0, 0, 0);
+            const diff = midnight - now;
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
+        
+        updateTimer();
         setInterval(updateTimer, 1000);
     </script>
 </body>
