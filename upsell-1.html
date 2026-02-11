@@ -3,176 +3,608 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHL Mastery - Special Offer</title>
+    <title>Wait! One More Thing...</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --bg-dark: #0e1018;
+            --accent-blue: #2e5bff;
+            --accent-green: #02b828;
+            --accent-orange: #f87e00;
+            --accent-red: #cc0000;
+            --text-white: #ffffff;
+            --text-light: #e0e0e0;
+            --text-dark: #333;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-dark); color: var(--text-white); line-height: 1.7; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 700; }
+        
+        /* Warning Banner */
+        .warning-banner {
+            background: #fff3cd;
+            border-bottom: 4px solid #ffc107;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .warning-banner h2 {
+            color: #856404;
+            font-size: 18px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .warning-banner p {
+            color: #856404;
+            font-size: 14px;
+        }
+        
+        /* Test Banner */
+        .test-banner {
+            background: var(--accent-orange);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Top Bar */
+        .top-bar {
+            background: white;
+            padding: 12px 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            color: var(--bg-dark);
+        }
+        
+        .logo span { color: var(--accent-blue); }
+        
+        /* Hero */
+        .hero {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        
+        .congrats-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-green), #05d632);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .hero h1 .green { color: var(--accent-green); }
+        .hero h1 .red { color: var(--accent-red); }
+        
+        .hero-sub {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+        
+        /* Video */
+        .video-wrap {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 3px solid var(--accent-blue);
+            position: relative;
+        }
+        
+        .video-placeholder {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .play-btn {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .play-btn::after {
+            content: '';
+            border-left: 20px solid var(--accent-blue);
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 5px;
+        }
+        
+        .unmute-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.85);
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        
+        .unmute-overlay span:first-child { display: block; margin-bottom: 2px; }
+        .unmute-overlay span:last-child { font-weight: 700; }
+        
+        /* CTA Button */
+        .cta-btn {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, var(--accent-green), #05d632);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(2,184,40,0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(2,184,40,0.5);
+        }
+        
+        .cta-btn .main { display: block; }
+        .cta-btn .sub { display: block; font-size: 13px; font-weight: 400; opacity: 0.9; margin-top: 3px; }
+        
+        .skip-link {
+            display: block;
+            margin-top: 20px;
+            color: #888;
+            font-size: 14px;
+            text-decoration: underline;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .skip-link:hover { color: #aaa; }
+        
+        /* Content Sections */
+        .section {
+            padding: 50px 20px;
+        }
+        
+        .section-white {
+            background: white;
+            color: var(--text-dark);
+        }
+        
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .section-title .blue { color: var(--accent-blue); }
+        .section-title .green { color: var(--accent-green); }
+        
+        /* The Story */
+        .story p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .story strong { color: var(--text-white); }
+        
+        .section-white .story strong { color: var(--text-dark); }
+        
+        .highlight-box {
+            background: rgba(46,91,255,0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            font-size: 17px;
+            font-style: italic;
+        }
+        
+        /* Comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .comparison { grid-template-columns: 1fr; }
+        }
+        
+        .compare-card {
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .compare-card.without {
+            background: rgba(204,0,0,0.1);
+            border: 2px solid rgba(204,0,0,0.3);
+        }
+        
+        .compare-card.with {
+            background: rgba(2,184,40,0.1);
+            border: 2px solid rgba(2,184,40,0.3);
+        }
+        
+        .compare-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .compare-card.without h4 { color: var(--accent-red); }
+        .compare-card.with h4 { color: var(--accent-green); }
+        
+        .compare-card ul {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .compare-card li {
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        
+        /* Products */
+        .products {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .products { grid-template-columns: 1fr; }
+        }
+        
+        .product-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .product-card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .product-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .product-card p {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+        
+        .product-card .value {
+            color: var(--accent-green);
+            font-size: 14px;
+            font-weight: 700;
+        }
+        
+        /* Pricing */
+        .pricing {
+            text-align: center;
+            padding: 40px;
+            background: rgba(46,91,255,0.05);
+            border-radius: 16px;
+            margin: 30px 0;
+        }
+        
+        .pricing .label {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        
+        .pricing .total-value {
+            font-size: 18px;
+            color: #888;
+            text-decoration: line-through;
+            margin-bottom: 10px;
+        }
+        
+        .pricing .price {
+            font-size: 60px;
+            font-weight: 900;
+            color: var(--accent-green);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1;
+        }
+        
+        .pricing .note {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 10px;
+        }
+        
+        /* Timer */
+        .timer-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .timer-label {
+            color: var(--accent-red);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .timer {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,0,0,0.1);
+            padding: 15px 25px;
+            border-radius: 10px;
+            border: 2px solid rgba(255,0,0,0.2);
+        }
+        
+        .timer-unit { text-align: center; }
+        .timer-val {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--accent-red);
+            font-family: 'Poppins', sans-serif;
+            min-width: 45px;
+        }
+        .timer-lbl { font-size: 10px; color: #888; text-transform: uppercase; }
+        .timer-sep { font-size: 28px; color: var(--accent-red); font-weight: 700; margin-bottom: 15px; }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 11px;
+            color: #666;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
 </head>
 <body>
-    <!-- Test Mode Banner -->
-    <div class="test-mode-banner">
-        🧪 TEST MODE — Upsell Page 1 of 2 • Click YES or NO to continue
+    <!-- Test Banner -->
+    <div class="test-banner">🧪 TEST MODE — Upsell 1 of 2 • Click YES or NO to continue</div>
+    
+    <!-- Warning Banner -->
+    <div class="warning-banner">
+        <h2>⚠️ IMPORTANT: Your Order Is Not Yet Complete</h2>
+        <p>Please do not close this page. You have a one-time opportunity to upgrade your challenge.</p>
     </div>
-
-    <!-- Warning Header -->
-    <div class="upsell-warning">
-        <h2>⚠️ WAIT! Your Order Is Not Complete</h2>
-        <p>Do NOT close this page. You have a one-time opportunity to upgrade your order.</p>
-    </div>
-
+    
     <!-- Top Bar -->
     <div class="top-bar">
-        <div class="top-bar-content">
-            <div class="logo">GHL <span>Mastery</span></div>
-        </div>
+        <div class="logo">GHL <span>Mastery</span></div>
     </div>
-
-    <!-- Upsell Hero -->
-    <section class="upsell-hero">
-        <h1>Want To Close Your First <span style="color: var(--accent-green);">$500 Call</span> THIS WEEK?</h1>
-        <p class="subhead">You now understand the AOF method. But having the <strong>knowledge</strong> and having the <strong>tools</strong> are two different things...</p>
-
-        <!-- Video -->
-        <div class="video-container" style="max-width: 700px; margin: 30px auto;">
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="congrats-badge">✓ CONGRATULATIONS!</div>
+        <h1>You've Joined The Challenge. But There's One Thing That <span class="red">Separates Finishers From Quitters...</span></h1>
+        <p class="hero-sub">Most people who buy training never implement. <strong>Not because they don't want to</strong> — but because they get stuck.</p>
+        
+        <div class="video-wrap">
             <div class="video-placeholder">
-                <div class="play-button"></div>
+                <div class="play-btn"></div>
+            </div>
+            <div class="unmute-overlay">
+                <span>🔇 Your Video Is Playing</span>
+                <span>Click To Unmute</span>
             </div>
         </div>
-
-        <p style="color: var(--text-light); max-width: 600px; margin: 0 auto 30px; font-size: 16px;">
-            Most people who buy training never implement. Not because they don't want to — but because they get stuck on the <em>"how do I actually say this?"</em> and <em>"what does a proposal look like?"</em>
-        </p>
+        
+        <a href="upsell-2.html?added=implementation" class="cta-btn">
+            <span class="main">✓ YES! Give Me The Implementation Stack</span>
+            <span class="sub">Add to my order for just $97</span>
+        </a>
+        
+        <button class="skip-link" onclick="window.location.href='upsell-2.html'">No thanks, I'll figure out the implementation myself →</button>
     </section>
-
-    <!-- The Offer -->
-    <section class="section section-dark">
-        <div class="container container-tight">
-            <h2 class="section-title">Introducing The <span>AOF Implementation Stack</span></h2>
-            <p class="section-subtitle">Everything you need to run your first AOF call TODAY — not someday.</p>
-
-            <div style="background: rgba(255,255,255,0.03); border-radius: 16px; padding: 30px; margin-top: 30px;">
-                <div class="included-item" style="background: transparent; border: none; padding: 15px 0;">
-                    <div class="included-icon">📝</div>
-                    <div class="included-content">
-                        <h3>Word-for-Word Call Script</h3>
-                        <p>Exactly what to say in your 15-minute free call to sell the $500 AOF session. Every word, every transition, every close.</p>
-                        <span class="included-value">Value: $297</span>
-                    </div>
-                </div>
-
-                <div class="included-item" style="background: transparent; border: none; padding: 15px 0;">
-                    <div class="included-icon">📄</div>
-                    <div class="included-content">
-                        <h3>AOF Proposal Template</h3>
-                        <p>The exact proposal format we use. Plug in your prospect's info, customize the scope, send. Looks professional, closes deals.</p>
-                        <span class="included-value">Value: $397</span>
-                    </div>
-                </div>
-
-                <div class="included-item" style="background: transparent; border: none; padding: 15px 0;">
-                    <div class="included-icon">📊</div>
-                    <div class="included-content">
-                        <h3>Pricing Calculator Spreadsheet</h3>
-                        <p>Never second-guess your pricing again. Input the project scope, get your price instantly. Includes margin calculator.</p>
-                        <span class="included-value">Value: $197</span>
-                    </div>
-                </div>
-
-                <div class="included-item" style="background: transparent; border: none; padding: 15px 0;">
-                    <div class="included-icon">✉️</div>
-                    <div class="included-content">
-                        <h3>Follow-Up Email Sequences</h3>
-                        <p>5 email templates for after the free call, after the AOF call, and after sending the proposal. Never wonder what to say next.</p>
-                        <span class="included-value">Value: $197</span>
-                    </div>
-                </div>
-
-                <div class="included-item" style="background: transparent; border: none; padding: 15px 0;">
-                    <div class="included-icon">🎯</div>
-                    <div class="included-content">
-                        <h3>Objection Handling Cheat Sheet</h3>
-                        <p>"That's too expensive." "I need to think about it." "Can you just build part of it?" — Handle every objection with confidence.</p>
-                        <span class="included-value">Value: $147</span>
-                    </div>
-                </div>
-
-                <div class="included-item" style="background: transparent; border: none; padding: 15px 0;">
-                    <div class="included-icon">📋</div>
-                    <div class="included-content">
-                        <h3>Niche-Specific Scope Templates</h3>
-                        <p>Pre-built scope templates for the top 5 niches: Real Estate, Home Services, Med Spas, Coaches, and Local Services.</p>
-                        <span class="included-value">Value: $497</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Price & CTA -->
+    
+    <!-- The Story -->
     <section class="section">
-        <div class="container container-tight" style="text-align: center;">
-            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 10px;">Total Value: $1,732</p>
-            <p style="font-size: 20px; margin-bottom: 5px;">Your One-Time Price Today:</p>
-            <p style="font-size: 64px; font-weight: 900; color: var(--accent-green); font-family: 'Poppins', sans-serif; line-height: 1;">$97</p>
-            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 30px;">Added to your order • Instant access</p>
-
-            <div class="upsell-buttons">
-                <a href="upsell-2.html?added=implementation" class="btn-upsell-yes">
-                    ✓ YES! Add Implementation Stack — $97
-                </a>
-                <button class="btn-upsell-no" onclick="window.location.href='upsell-2.html'">
-                    No thanks, I'll figure out the implementation myself →
-                </button>
+        <div class="container story">
+            <p>Let me tell you about two types of people who buy this challenge...</p>
+            
+            <p><strong>The first type</strong> watches the videos, takes notes, feels inspired... and then sits on it for weeks. They tell themselves they'll "do it when they're ready." They never book a single paid call.</p>
+            
+            <p><strong>The second type</strong> watches the videos AND has everything they need to take action immediately. Scripts. Templates. Exact words to say. They book their first $500 call before the challenge even ends.</p>
+            
+            <div class="highlight-box">
+                <p>"The difference isn't motivation. It's <strong>preparation</strong>. Some people need to feel ready before they act."</p>
             </div>
-
+            
+            <p>If you're the type who learns best by having <strong>everything laid out</strong> — every word, every template, every tool — then this is for you.</p>
+            
+            <p>If you're the type who can just "figure it out" on your own... skip this. You don't need it.</p>
+            
+            <p>But if you want to feel <strong>100% prepared</strong> walking into your first paid discovery call...</p>
+        </div>
+    </section>
+    
+    <!-- Comparison -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">The Challenge <span class="blue">Alone</span> vs. With The <span class="green">Implementation Stack</span></h2>
+            
+            <div class="comparison">
+                <div class="compare-card without">
+                    <h4>❌ Challenge Only</h4>
+                    <ul>
+                        <li><span>✖</span> You know WHAT to do</li>
+                        <li><span>✖</span> You have to create your own scripts</li>
+                        <li><span>✖</span> You have to figure out proposals</li>
+                        <li><span>✖</span> You have to guess at pricing</li>
+                        <li><span>✖</span> You have to write your own emails</li>
+                        <li><span>✖</span> You wing the objection handling</li>
+                    </ul>
+                </div>
+                <div class="compare-card with">
+                    <h4>✓ With Implementation Stack</h4>
+                    <ul>
+                        <li><span>✓</span> You know WHAT to do</li>
+                        <li><span>✓</span> Word-for-word scripts ready to use</li>
+                        <li><span>✓</span> Proposal templates for every niche</li>
+                        <li><span>✓</span> Pricing calculator does the math</li>
+                        <li><span>✓</span> Copy-paste email sequences</li>
+                        <li><span>✓</span> Objection cheat sheet in hand</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- What's Included -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">Everything In The <span class="green">Implementation Stack</span></h2>
+            
+            <div class="products">
+                <div class="product-card">
+                    <div class="icon">📝</div>
+                    <h4>Word-for-Word Call Script</h4>
+                    <p>Exactly what to say in the 15-min free call to close the $500 AOF session.</p>
+                    <div class="value">Value: $297</div>
+                </div>
+                <div class="product-card">
+                    <div class="icon">📄</div>
+                    <h4>AOF Proposal Template</h4>
+                    <p>The exact proposal format. Plug in their info, customize, send.</p>
+                    <div class="value">Value: $397</div>
+                </div>
+                <div class="product-card">
+                    <div class="icon">📊</div>
+                    <h4>Pricing Calculator</h4>
+                    <p>Never second-guess your pricing. Input scope, get price.</p>
+                    <div class="value">Value: $197</div>
+                </div>
+                <div class="product-card">
+                    <div class="icon">✉️</div>
+                    <h4>Follow-Up Email Sequences</h4>
+                    <p>5 templates for after every stage. Never wonder what to say.</p>
+                    <div class="value">Value: $197</div>
+                </div>
+                <div class="product-card">
+                    <div class="icon">🎯</div>
+                    <h4>Objection Handling Cheat Sheet</h4>
+                    <p>"Too expensive." "Need to think about it." Handle them all.</p>
+                    <div class="value">Value: $147</div>
+                </div>
+                <div class="product-card">
+                    <div class="icon">📋</div>
+                    <h4>Niche-Specific Scope Templates</h4>
+                    <p>Pre-built for Real Estate, Home Services, Med Spas, Coaches, Local.</p>
+                    <div class="value">Value: $497</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="pricing">
+                <div class="label">Total Value:</div>
+                <div class="total-value">$1,732</div>
+                <div class="label">Your One-Time Price Today:</div>
+                <div class="price">$97</div>
+                <div class="note">Added to your order • Instant access</div>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="upsell-2.html?added=implementation" class="cta-btn">
+                    <span class="main">✓ YES! Add The Implementation Stack — $97</span>
+                </a>
+                
+                <button class="skip-link" onclick="window.location.href='upsell-2.html'">No thanks, I'll create my own scripts and templates →</button>
+            </div>
+            
             <!-- Timer -->
-            <div class="timer-container" style="margin-top: 40px;">
-                <p class="timer-label-top">⚡ This offer expires when you leave this page</p>
+            <div class="timer-section">
+                <div class="timer-label">⚡ This offer expires when you leave this page</div>
                 <div class="timer">
                     <div class="timer-unit">
-                        <div class="timer-value" id="minutes">14</div>
-                        <div class="timer-label">Minutes</div>
+                        <div class="timer-val" id="minutes">14</div>
+                        <div class="timer-lbl">Minutes</div>
                     </div>
-                    <span class="timer-separator">:</span>
+                    <span class="timer-sep">:</span>
                     <div class="timer-unit">
-                        <div class="timer-value" id="seconds">59</div>
-                        <div class="timer-label">Seconds</div>
+                        <div class="timer-val" id="seconds">59</div>
+                        <div class="timer-lbl">Seconds</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Guarantee -->
-    <section class="section section-dark">
-        <div class="container">
-            <div class="guarantee-box">
-                <div class="guarantee-icon">🛡️</div>
-                <h3 class="guarantee-title">Same 30-Day Guarantee Applies</h3>
-                <p class="guarantee-text">If you use these templates and don't close at least one paid AOF call in 30 days, we'll refund this entire upgrade. No questions asked.</p>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- Footer -->
     <footer class="footer">
-        <p>Copyright © 2026 | GHL Mastery by RhinoMouse Marketing Inc. | All Rights Reserved</p>
+        <p>© 2026 GHL Mastery by RhinoMouse Marketing Inc.</p>
     </footer>
-
-    <!-- Timer Script -->
+    
     <script>
         function updateTimer() {
-            const minutes = document.getElementById('minutes');
-            const seconds = document.getElementById('seconds');
-            
-            let m = parseInt(minutes.textContent);
-            let s = parseInt(seconds.textContent);
-            
-            s--;
-            if (s < 0) { s = 59; m--; }
-            if (m < 0) { m = 0; s = 0; }
-            
-            minutes.textContent = m.toString().padStart(2, '0');
-            seconds.textContent = s.toString().padStart(2, '0');
+            const m = document.getElementById('minutes');
+            const s = document.getElementById('seconds');
+            let min = parseInt(m.textContent), sec = parseInt(s.textContent);
+            sec--;
+            if (sec < 0) { sec = 59; min--; }
+            if (min < 0) { min = 0; sec = 0; }
+            m.textContent = min.toString().padStart(2, '0');
+            s.textContent = sec.toString().padStart(2, '0');
         }
         setInterval(updateTimer, 1000);
     </script>
