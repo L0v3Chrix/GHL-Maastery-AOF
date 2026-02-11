@@ -3,216 +3,520 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHL Mastery - You're In!</title>
+    <title>You're In! | GHL Mastery</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --primary-bg: #0e1018;
+            --secondary-bg: #1a3aad;
+            --accent-blue: #2e5bff;
+            --accent-green: #04b828;
+            --accent-orange: #f87e00;
+            --text-white: #ffffff;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Success Header */
+        .success-header {
+            background: linear-gradient(135deg, var(--accent-green), #05d632);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .success-header h2 {
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* Confirmation Box */
+        .confirmation-box {
+            background: rgba(4, 184, 40, 0.1);
+            border: 2px solid var(--accent-green);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .confirmation-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .confirmation-box h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .confirmation-box p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .email-note {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* What's Next Section */
+        .next-section {
+            margin-bottom: 50px;
+        }
+
+        .next-section h2 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .next-section h2 span {
+            color: var(--accent-blue);
+        }
+
+        /* Video */
+        .video-container {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid var(--accent-blue);
+            box-shadow: 0 20px 60px rgba(46, 91, 255, 0.3);
+        }
+
+        .video-placeholder {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .play-btn::after {
+            content: '';
+            border-left: 22px solid var(--accent-blue);
+            border-top: 13px solid transparent;
+            border-bottom: 13px solid transparent;
+            margin-left: 5px;
+        }
+
+        /* Steps */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        @media (max-width: 700px) {
+            .steps-grid { grid-template-columns: 1fr; }
+        }
+
+        .step-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-green), #05d632);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            margin: 0 auto 15px;
+        }
+
+        .step-card h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .step-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .step-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--accent-blue);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .step-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(46, 91, 255, 0.3);
+        }
+
+        /* VIP Section */
+        .vip-section {
+            background: linear-gradient(135deg, rgba(46, 91, 255, 0.15), rgba(46, 91, 255, 0.05));
+            border: 2px solid rgba(46, 91, 255, 0.3);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .vip-badge {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .vip-section h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .vip-section h2 span {
+            color: var(--accent-green);
+        }
+
+        .vip-section > p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .vip-benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        @media (max-width: 600px) {
+            .vip-benefits { grid-template-columns: 1fr; }
+        }
+
+        .vip-benefit {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+        }
+
+        .vip-benefit .icon {
+            color: var(--accent-green);
+            font-size: 20px;
+        }
+
+        .vip-benefit h4 {
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .vip-benefit p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .vip-cta {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, var(--accent-orange), #d96800);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .vip-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(248, 126, 0, 0.4);
+        }
+
+        .vip-note {
+            margin-top: 15px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Order Summary */
+        .order-summary {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+
+        .order-summary h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-item .name {
+            color: var(--text-light);
+        }
+
+        .order-item .price {
+            font-weight: 600;
+            color: white;
+        }
+
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 15px;
+            margin-top: 10px;
+            border-top: 2px solid rgba(255,255,255,0.1);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .order-total .price {
+            color: var(--accent-green);
+        }
+
+        /* Support */
+        .support-section {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 16px;
+        }
+
+        .support-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .support-section p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .support-email {
+            color: var(--accent-blue);
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Test Mode Banner -->
-    <div class="test-mode-banner">
-        🧪 TEST MODE — Order Complete! This is the Thank You page • <a href="index.html" style="color: white; text-decoration: underline;">Start Over</a>
+    <!-- Success Header -->
+    <div class="success-header">
+        <h2>✓ Payment Successful — You're In!</h2>
     </div>
 
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-bar-content">
-            <div class="logo">GHL <span>Mastery</span></div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Confirmation -->
+        <div class="confirmation-box">
+            <div class="confirmation-icon">🎉</div>
+            <h1>Welcome To GHL Mastery!</h1>
+            <p>Your access has been activated. Check your email for login details and next steps.</p>
+            <div class="email-note">
+                📧 Check your inbox (and spam folder) for an email from <strong>team@ghlmastery.com</strong>
+            </div>
         </div>
-    </div>
 
-    <!-- Thank You Hero -->
-    <section class="thankyou-hero">
-        <h1>🎉 You're In!</h1>
-        <p class="subhead">Welcome to GHL Mastery. Your access details are being sent to your email right now.</p>
+        <!-- What's Next -->
+        <div class="next-section">
+            <h2>Here's What To Do <span>Right Now</span></h2>
+
+            <!-- Video -->
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <div class="play-btn"></div>
+                </div>
+            </div>
+
+            <!-- Steps -->
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Access Your Training</h4>
+                    <p>Log in and start the first module. Takes about 20 minutes.</p>
+                    <a href="#" class="step-btn">Go To Training →</a>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Join The Community</h4>
+                    <p>Introduce yourself. Connect with other agency owners.</p>
+                    <a href="#" class="step-btn">Join Community →</a>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Book Your Onboarding</h4>
+                    <p>Optional but recommended. Get oriented and ask questions.</p>
+                    <a href="#" class="step-btn">Book Call →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIP Teaser -->
+        <div class="vip-section">
+            <span class="vip-badge">Next Level</span>
+            <h2>Want Us To Handle The <span>Fulfillment?</span></h2>
+            <p>The roadmap teaches you to sell. But what if you had a full team to BUILD the systems you're selling?</p>
+
+            <div class="vip-benefits">
+                <div class="vip-benefit">
+                    <span class="icon">✓</span>
+                    <div>
+                        <h4>Done-With-You Build Team</h4>
+                        <p>We build under YOUR brand. You sell, we deliver.</p>
+                    </div>
+                </div>
+                <div class="vip-benefit">
+                    <span class="icon">✓</span>
+                    <div>
+                        <h4>Weekly Coaching Calls</h4>
+                        <p>3 calls/week with Adam, Brendan, and the team.</p>
+                    </div>
+                </div>
+                <div class="vip-benefit">
+                    <span class="icon">✓</span>
+                    <div>
+                        <h4>24/7 Technical Support</h4>
+                        <p>Skip the 3-week GHL support queue. We fix it fast.</p>
+                    </div>
+                </div>
+                <div class="vip-benefit">
+                    <span class="icon">✓</span>
+                    <div>
+                        <h4>Private Community</h4>
+                        <p>Network with 7-figure consultants closing $15K+ deals.</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#" class="vip-cta">Learn About VIP Mastery →</a>
+            <p class="vip-note">$497/month • Cancel anytime • Pays for itself with one $500 call</p>
+        </div>
 
         <!-- Order Summary -->
         <div class="order-summary">
-            <h3>📦 Order Summary</h3>
+            <h3>📋 Your Order Summary</h3>
             <div class="order-item">
-                <span>AOF Framework Training</span>
-                <span>$47.00</span>
+                <span class="name">First $500 Paid Call Roadmap</span>
+                <span class="price">$47</span>
             </div>
-            <div class="order-item" id="bump-item" style="display: none;">
-                <span>AOF Quick-Start Templates</span>
-                <span>$27.00</span>
+            <div class="order-item">
+                <span class="name">Implementation Stack</span>
+                <span class="price">—</span>
             </div>
-            <div class="order-item" id="upsell1-item" style="display: none;">
-                <span>Implementation Stack</span>
-                <span>$97.00</span>
+            <div class="order-item">
+                <span class="name">Strategy Session + VIP Preview</span>
+                <span class="price">—</span>
             </div>
-            <div class="order-item" id="upsell2-item" style="display: none;">
-                <span>Accelerator + Strategy Session</span>
-                <span>$297.00</span>
-            </div>
-            <div class="order-item total">
-                <span>Total</span>
-                <span class="price" id="total-price">$47.00</span>
+            <div class="order-total">
+                <span>Total Charged</span>
+                <span class="price">$47.00</span>
             </div>
         </div>
 
-        <p style="color: var(--text-muted); font-size: 14px; margin-top: 20px;">
-            📧 Check your inbox for login details. If you don't see it in 5 minutes, check your spam folder.
-        </p>
-    </section>
-
-    <!-- What's Next -->
-    <section class="section section-dark">
-        <div class="container container-tight">
-            <div class="next-steps">
-                <h3>🚀 What To Do Right Now</h3>
-                <ol>
-                    <li><strong>Check your email</strong> — Your login credentials are on the way</li>
-                    <li><strong>Join the community</strong> — Introduce yourself and say hi</li>
-                    <li><strong>Watch Module 1</strong> — Start with the AOF Mindset Shift training</li>
-                    <li><strong>Identify your first prospect</strong> — Think of someone you could reach out to this week</li>
-                </ol>
-            </div>
+        <!-- Support -->
+        <div class="support-section">
+            <h3>Need Help?</h3>
+            <p>Our team is here to make sure you succeed. Reach out anytime.</p>
+            <a href="mailto:support@ghlmastery.com" class="support-email">support@ghlmastery.com</a>
         </div>
-    </section>
-
-    <!-- VIP Teaser Video -->
-    <section class="section">
-        <div class="container container-tight" style="text-align: center;">
-            <h2 class="section-title" style="font-size: 28px;">Want Us To <span class="green">Handle The Fulfillment?</span></h2>
-            <p class="section-subtitle">Watch this quick video to see how VIP members are scaling WITHOUT doing all the tech work themselves.</p>
-
-            <div class="video-container" style="max-width: 700px; margin: 30px auto;">
-                <div class="video-placeholder">
-                    <div class="play-button"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- VIP Offer -->
-    <section class="section section-dark">
-        <div class="container container-tight">
-            <div style="background: linear-gradient(135deg, rgba(46, 91, 255, 0.15) 0%, rgba(4, 184, 40, 0.1) 100%); border: 2px solid var(--accent-blue); border-radius: 20px; padding: 40px; text-align: center;">
-                <p style="color: var(--accent-blue); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">The Next Level</p>
-                <h2 style="font-size: 32px; margin-bottom: 15px;">GHL Mastery <span style="color: var(--accent-green);">VIP</span></h2>
-                <p style="color: var(--text-light); font-size: 16px; max-width: 550px; margin: 0 auto 25px; line-height: 1.7;">
-                    Stop doing everything yourself. Get access to our trained build team who execute projects under YOUR brand — plus weekly coaching, advanced training, and 24/7 support.
-                </p>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 30px 0; text-align: left;">
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="color: var(--accent-green);">✓</span>
-                        <span style="font-size: 14px;">Weekly sales coaching (3x/week)</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="color: var(--accent-green);">✓</span>
-                        <span style="font-size: 14px;">White-label build team</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="color: var(--accent-green);">✓</span>
-                        <span style="font-size: 14px;">Done-with-you AOF templates</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="color: var(--accent-green);">✓</span>
-                        <span style="font-size: 14px;">24/7 technical support</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="color: var(--accent-green);">✓</span>
-                        <span style="font-size: 14px;">Advanced GHL + AI workshops</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="color: var(--accent-green);">✓</span>
-                        <span style="font-size: 14px;">Private 7-figure community</span>
-                    </div>
-                </div>
-
-                <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 5px;">Just</p>
-                <p style="font-size: 48px; font-weight: 900; color: var(--accent-green); font-family: 'Poppins', sans-serif; line-height: 1; margin-bottom: 5px;">$497<span style="font-size: 20px; color: var(--text-muted);">/month</span></p>
-                <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 25px;">Cancel anytime • ROI from your first $500 call</p>
-
-                <a href="https://joinghlmastery.com/vip/membership" target="_blank" class="cta-btn" style="font-size: 16px; padding: 18px 50px;">
-                    Learn More About VIP →
-                </a>
-
-                <p style="font-size: 13px; color: var(--text-muted); margin-top: 20px;">
-                    ℹ️ No pressure — focus on the AOF training first. VIP is here when you're ready to scale.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Book Onboarding -->
-    <section class="section">
-        <div class="container container-tight" style="text-align: center;">
-            <h2 class="section-title" style="font-size: 28px;">📅 Book Your <span>Onboarding Call</span></h2>
-            <p class="section-subtitle">Optional but recommended: Get oriented and ask any questions about implementing AOF.</p>
-
-            <!-- Calendar Placeholder -->
-            <div style="background: rgba(255,255,255,0.05); border: 2px dashed var(--border-subtle); border-radius: 16px; padding: 60px 30px; margin-top: 30px;">
-                <p style="font-size: 18px; margin-bottom: 15px;">📆 Calendar Widget</p>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">[In production, your GHL calendar would embed here]</p>
-                <a href="#" class="cta-btn" style="font-size: 14px; padding: 14px 30px; background: var(--accent-blue);">
-                    Pick a Time (Demo)
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Access Links -->
-    <section class="section section-dark">
-        <div class="container container-tight" style="text-align: center;">
-            <h2 class="section-title" style="font-size: 28px;">🔗 Quick Access</h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px;">
-                <a href="#" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 25px; text-decoration: none; transition: transform 0.3s;">
-                    <p style="font-size: 30px; margin-bottom: 10px;">🎓</p>
-                    <p style="font-weight: 600; margin-bottom: 5px;">Training Portal</p>
-                    <p style="font-size: 13px; color: var(--text-muted);">Access your courses</p>
-                </a>
-                <a href="#" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 25px; text-decoration: none; transition: transform 0.3s;">
-                    <p style="font-size: 30px; margin-bottom: 10px;">👥</p>
-                    <p style="font-weight: 600; margin-bottom: 5px;">Community</p>
-                    <p style="font-size: 13px; color: var(--text-muted);">Join the conversation</p>
-                </a>
-                <a href="#" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 25px; text-decoration: none; transition: transform 0.3s;">
-                    <p style="font-size: 30px; margin-bottom: 10px;">📥</p>
-                    <p style="font-weight: 600; margin-bottom: 5px;">Downloads</p>
-                    <p style="font-size: 13px; color: var(--text-muted);">Get your resources</p>
-                </a>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>Copyright © 2026 | GHL Mastery by RhinoMouse Marketing Inc. | All Rights Reserved</p>
-        <p>Questions? Email us at support@joinghlmastery.com</p>
+        <p>© 2026 GHL Mastery by RhinoMouse Marketing Inc. All Rights Reserved.</p>
     </footer>
-
-    <!-- Dynamic Order Summary Script -->
-    <script>
-        // Parse URL params to show what was "purchased"
-        const urlParams = new URLSearchParams(window.location.search);
-        let total = 47;
-
-        // Check for bump (would be passed from form)
-        if (urlParams.get('bump') === 'true') {
-            document.getElementById('bump-item').style.display = 'flex';
-            total += 27;
-        }
-
-        // Check for upsell 1
-        if (urlParams.get('added') === 'implementation' || window.location.search.includes('implementation')) {
-            document.getElementById('upsell1-item').style.display = 'flex';
-            total += 97;
-        }
-
-        // Check for upsell 2
-        if (urlParams.get('added') === 'accelerator' || window.location.search.includes('accelerator')) {
-            document.getElementById('upsell2-item').style.display = 'flex';
-            total += 297;
-            // Also show upsell 1 since they went through both
-            document.getElementById('upsell1-item').style.display = 'flex';
-            total += 97;
-        }
-
-        // Update total
-        document.getElementById('total-price').textContent = '$' + total.toFixed(2);
-    </script>
 </body>
 </html>

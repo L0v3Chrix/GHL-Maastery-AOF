@@ -3,379 +3,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wait! One More Thing...</title>
+    <title>Add The Implementation Stack | GHL Mastery</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0e1018;
+            --primary-bg: #0e1018;
+            --secondary-bg: #1a3aad;
             --accent-blue: #2e5bff;
-            --accent-green: #02b828;
+            --accent-green: #04b828;
             --accent-orange: #f87e00;
-            --accent-red: #cc0000;
+            --accent-red: #e74c3c;
             --text-white: #ffffff;
             --text-light: #e0e0e0;
-            --text-dark: #333;
+            --text-muted: #a0a0a0;
         }
-        
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-dark); color: var(--text-white); line-height: 1.7; }
-        h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 700; }
-        
-        /* Warning Banner */
-        .warning-banner {
-            background: #fff3cd;
-            border-bottom: 4px solid #ffc107;
-            padding: 20px;
-            text-align: center;
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+            min-height: 100vh;
         }
-        
-        .warning-banner h2 {
-            color: #856404;
-            font-size: 18px;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
         }
-        
-        .warning-banner p {
-            color: #856404;
-            font-size: 14px;
-        }
-        
-        /* Test Banner */
-        .test-banner {
-            background: var(--accent-orange);
+
+        /* Warning Header */
+        .warning-header {
+            background: linear-gradient(135deg, #cc0000, #990000);
             color: white;
             text-align: center;
-            padding: 8px;
-            font-size: 12px;
+            padding: 15px 20px;
+            font-size: 14px;
             font-weight: 600;
         }
-        
-        /* Top Bar */
-        .top-bar {
-            background: white;
-            padding: 12px 20px;
+
+        .warning-header .icon {
+            margin-right: 8px;
+        }
+
+        /* Processing Bar */
+        .processing-bar {
+            background: #1a1a2e;
+            padding: 20px;
             text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            font-size: 22px;
-            color: var(--bg-dark);
+
+        .processing-text {
+            color: var(--accent-green);
+            font-weight: 600;
+            margin-bottom: 10px;
         }
-        
-        .logo span { color: var(--accent-blue); }
-        
-        /* Hero */
-        .hero {
+
+        .progress-bar {
+            max-width: 400px;
+            margin: 0 auto;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 75%;
+            background: linear-gradient(90deg, var(--accent-green), #05d632);
+            border-radius: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Main Content */
+        .main-content {
             max-width: 800px;
             margin: 0 auto;
             padding: 50px 20px;
             text-align: center;
         }
-        
-        .congrats-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-green), #05d632);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
+
+        .pre-head {
+            color: var(--accent-orange);
             font-size: 13px;
             font-weight: 700;
-            margin-bottom: 20px;
-        }
-        
-        .hero h1 {
-            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 15px;
-            line-height: 1.2;
         }
-        
-        .hero h1 .green { color: var(--accent-green); }
-        .hero h1 .red { color: var(--accent-red); }
-        
-        .hero-sub {
-            font-size: 18px;
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+
+        h1 .green { color: var(--accent-green); }
+        h1 .orange { color: var(--accent-orange); }
+
+        .subhead {
+            font-size: 20px;
             color: var(--text-light);
-            margin-bottom: 30px;
-        }
-        
-        /* Video */
-        .video-wrap {
+            margin-bottom: 40px;
             max-width: 650px;
-            margin: 0 auto 30px;
-            border-radius: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Video */
+        .video-container {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            border-radius: 12px;
             overflow: hidden;
             border: 3px solid var(--accent-blue);
-            position: relative;
+            box-shadow: 0 20px 60px rgba(46, 91, 255, 0.3);
         }
-        
+
         .video-placeholder {
             aspect-ratio: 16/9;
             background: linear-gradient(135deg, #1a1a2e, #16213e);
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
-        
+
         .play-btn {
-            width: 70px;
-            height: 70px;
-            background: white;
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.95);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
         }
-        
+
         .play-btn::after {
             content: '';
-            border-left: 20px solid var(--accent-blue);
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
+            border-left: 22px solid var(--accent-blue);
+            border-top: 13px solid transparent;
+            border-bottom: 13px solid transparent;
             margin-left: 5px;
         }
-        
-        .unmute-overlay {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.85);
-            padding: 12px 18px;
-            border-radius: 8px;
-            font-size: 13px;
-            cursor: pointer;
-        }
-        
-        .unmute-overlay span:first-child { display: block; margin-bottom: 2px; }
-        .unmute-overlay span:last-child { font-weight: 700; }
-        
-        /* CTA Button */
-        .cta-btn {
-            display: inline-block;
-            padding: 20px 50px;
-            background: linear-gradient(135deg, var(--accent-green), #05d632);
-            color: white;
-            font-size: 18px;
-            font-weight: 700;
-            font-family: 'Poppins', sans-serif;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 8px 30px rgba(2,184,40,0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(2,184,40,0.5);
-        }
-        
-        .cta-btn .main { display: block; }
-        .cta-btn .sub { display: block; font-size: 13px; font-weight: 400; opacity: 0.9; margin-top: 3px; }
-        
-        .skip-link {
-            display: block;
-            margin-top: 20px;
-            color: #888;
-            font-size: 14px;
-            text-decoration: underline;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-        
-        .skip-link:hover { color: #aaa; }
-        
-        /* Content Sections */
-        .section {
-            padding: 50px 20px;
-        }
-        
-        .section-white {
-            background: white;
-            color: var(--text-dark);
-        }
-        
-        .container {
-            max-width: 750px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            font-size: 26px;
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        
-        .section-title .blue { color: var(--accent-blue); }
-        .section-title .green { color: var(--accent-green); }
-        
-        /* The Story */
-        .story p {
-            font-size: 16px;
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-        
-        .story strong { color: var(--text-white); }
-        
-        .section-white .story strong { color: var(--text-dark); }
-        
-        .highlight-box {
-            background: rgba(46,91,255,0.1);
-            border-left: 4px solid var(--accent-blue);
-            padding: 20px 25px;
-            margin: 25px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .highlight-box p {
-            margin: 0;
-            font-size: 17px;
-            font-style: italic;
-        }
-        
-        /* Comparison */
-        .comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 40px 0;
-        }
-        
-        @media (max-width: 600px) {
-            .comparison { grid-template-columns: 1fr; }
-        }
-        
-        .compare-card {
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        
-        .compare-card.without {
-            background: rgba(204,0,0,0.1);
-            border: 2px solid rgba(204,0,0,0.3);
-        }
-        
-        .compare-card.with {
-            background: rgba(2,184,40,0.1);
-            border: 2px solid rgba(2,184,40,0.3);
-        }
-        
-        .compare-card h4 {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-        
-        .compare-card.without h4 { color: var(--accent-red); }
-        .compare-card.with h4 { color: var(--accent-green); }
-        
-        .compare-card ul {
-            list-style: none;
+
+        /* The Gap Section */
+        .gap-section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 50px;
             text-align: left;
         }
-        
-        .compare-card li {
-            font-size: 14px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
+
+        .gap-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
         }
-        
-        /* Products */
-        .products {
+
+        .gap-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 30px 0;
+            gap: 30px;
         }
-        
+
         @media (max-width: 600px) {
-            .products { grid-template-columns: 1fr; }
+            .gap-grid { grid-template-columns: 1fr; }
         }
-        
-        .product-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+
+        .gap-col h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gap-col.without h4 { color: var(--accent-red); }
+        .gap-col.with h4 { color: var(--accent-green); }
+
+        .gap-list {
+            list-style: none;
+        }
+
+        .gap-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* What's Included */
+        .included-section {
+            margin-bottom: 50px;
+        }
+
+        .included-section h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: left;
+        }
+
+        @media (max-width: 600px) {
+            .included-grid { grid-template-columns: 1fr; }
+        }
+
+        .included-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 12px;
             padding: 25px;
-            text-align: center;
+            display: flex;
+            gap: 15px;
         }
-        
-        .product-card .icon {
-            font-size: 40px;
-            margin-bottom: 15px;
+
+        .included-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-blue), #1a3aad);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
         }
-        
-        .product-card h4 {
+
+        .included-content h4 {
             font-size: 16px;
-            margin-bottom: 8px;
-        }
-        
-        .product-card p {
-            font-size: 13px;
-            color: var(--text-light);
-            margin-bottom: 10px;
-        }
-        
-        .product-card .value {
-            color: var(--accent-green);
-            font-size: 14px;
-            font-weight: 700;
-        }
-        
-        /* Pricing */
-        .pricing {
-            text-align: center;
-            padding: 40px;
-            background: rgba(46,91,255,0.05);
-            border-radius: 16px;
-            margin: 30px 0;
-        }
-        
-        .pricing .label {
-            font-size: 14px;
-            color: var(--text-light);
             margin-bottom: 5px;
         }
-        
-        .pricing .total-value {
+
+        .included-content p {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .included-value {
+            font-size: 12px;
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        /* Price Box */
+        .price-box {
+            background: linear-gradient(135deg, rgba(4,184,40,0.1), rgba(4,184,40,0.05));
+            border: 2px solid var(--accent-green);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .total-value {
             font-size: 18px;
-            color: #888;
-            text-decoration: line-through;
+            color: var(--text-light);
             margin-bottom: 10px;
         }
-        
-        .pricing .price {
-            font-size: 60px;
+
+        .total-value span {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .price-today {
+            font-size: 20px;
+            color: var(--text-white);
+            margin-bottom: 15px;
+        }
+
+        .price-amount {
+            font-size: 64px;
             font-weight: 900;
             color: var(--accent-green);
             font-family: 'Poppins', sans-serif;
             line-height: 1;
         }
-        
-        .pricing .note {
+
+        .price-note {
             font-size: 14px;
-            color: var(--text-light);
+            color: var(--text-muted);
             margin-top: 10px;
         }
-        
+
+        /* CTA Buttons */
+        .cta-section {
+            margin-bottom: 30px;
+        }
+
+        .btn-yes {
+            display: inline-block;
+            width: 100%;
+            max-width: 500px;
+            padding: 22px 40px;
+            background: linear-gradient(135deg, var(--accent-green), #05d632);
+            color: white;
+            font-size: 20px;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(4, 184, 40, 0.4);
+        }
+
+        .btn-no {
+            display: block;
+            color: var(--text-muted);
+            font-size: 14px;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .btn-no:hover {
+            color: var(--text-light);
+        }
+
         /* Timer */
         .timer-section {
-            text-align: center;
-            margin: 30px 0;
+            margin-bottom: 40px;
         }
-        
+
         .timer-label {
             color: var(--accent-red);
             font-size: 12px;
@@ -383,17 +359,17 @@
             text-transform: uppercase;
             margin-bottom: 10px;
         }
-        
+
         .timer {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255,0,0,0.1);
-            padding: 15px 25px;
+            background: rgba(231, 76, 60, 0.1);
+            padding: 12px 25px;
             border-radius: 10px;
-            border: 2px solid rgba(255,0,0,0.2);
+            border: 2px solid rgba(231, 76, 60, 0.3);
         }
-        
+
         .timer-unit { text-align: center; }
         .timer-val {
             font-size: 32px;
@@ -402,210 +378,219 @@
             font-family: 'Poppins', sans-serif;
             min-width: 45px;
         }
-        .timer-lbl { font-size: 10px; color: #888; text-transform: uppercase; }
-        .timer-sep { font-size: 28px; color: var(--accent-red); font-weight: 700; margin-bottom: 15px; }
-        
+        .timer-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
+        .timer-sep { font-size: 28px; color: var(--accent-red); font-weight: 700; margin-bottom: 16px; }
+
+        /* Guarantee */
+        .guarantee {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(4, 184, 40, 0.1);
+            border: 1px solid rgba(4, 184, 40, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .guarantee-icon {
+            font-size: 40px;
+        }
+
+        .guarantee p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
         /* Footer */
         .footer {
             text-align: center;
-            padding: 30px 20px;
-            font-size: 11px;
+            padding: 40px 20px;
+            font-size: 12px;
             color: #666;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <!-- Test Banner -->
-    <div class="test-banner">🧪 TEST MODE — Upsell 1 of 2 • Click YES or NO to continue</div>
-    
-    <!-- Warning Banner -->
-    <div class="warning-banner">
-        <h2>⚠️ IMPORTANT: Your Order Is Not Yet Complete</h2>
-        <p>Please do not close this page. You have a one-time opportunity to upgrade your challenge.</p>
+    <!-- Warning Header -->
+    <div class="warning-header">
+        <span class="icon">⚠️</span>
+        <strong>WAIT! Your order is not complete.</strong> Do not close this page.
     </div>
-    
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="logo">GHL <span>Mastery</span></div>
+
+    <!-- Processing Bar -->
+    <div class="processing-bar">
+        <div class="processing-text">✓ Your order is being processed...</div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
     </div>
-    
-    <!-- Hero -->
-    <section class="hero">
-        <div class="congrats-badge">✓ CONGRATULATIONS!</div>
-        <h1>You've Joined The Challenge. But There's One Thing That <span class="red">Separates Finishers From Quitters...</span></h1>
-        <p class="hero-sub">Most people who buy training never implement. <strong>Not because they don't want to</strong> — but because they get stuck.</p>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <p class="pre-head">One-Time Offer — Only Available Right Now</p>
         
-        <div class="video-wrap">
+        <h1>Want To Book Your First <span class="green">$500 Call</span> <span class="orange">This Week?</span></h1>
+        
+        <p class="subhead">You have the roadmap. Now get the <strong>exact tools</strong> our VIP members use to close $10K+ deals — plug and play, zero guesswork.</p>
+
+        <!-- Video -->
+        <div class="video-container">
             <div class="video-placeholder">
                 <div class="play-btn"></div>
             </div>
-            <div class="unmute-overlay">
-                <span>🔇 Your Video Is Playing</span>
-                <span>Click To Unmute</span>
-            </div>
         </div>
-        
-        <a href="upsell-2.html?added=implementation" class="cta-btn">
-            <span class="main">✓ YES! Give Me The Implementation Stack</span>
-            <span class="sub">Add to my order for just $97</span>
-        </a>
-        
-        <button class="skip-link" onclick="window.location.href='upsell-2.html'">No thanks, I'll figure out the implementation myself →</button>
-    </section>
-    
-    <!-- The Story -->
-    <section class="section">
-        <div class="container story">
-            <p>Let me tell you about two types of people who buy this challenge...</p>
-            
-            <p><strong>The first type</strong> watches the videos, takes notes, feels inspired... and then sits on it for weeks. They tell themselves they'll "do it when they're ready." They never book a single paid call.</p>
-            
-            <p><strong>The second type</strong> watches the videos AND has everything they need to take action immediately. Scripts. Templates. Exact words to say. They book their first $500 call before the challenge even ends.</p>
-            
-            <div class="highlight-box">
-                <p>"The difference isn't motivation. It's <strong>preparation</strong>. Some people need to feel ready before they act."</p>
-            </div>
-            
-            <p>If you're the type who learns best by having <strong>everything laid out</strong> — every word, every template, every tool — then this is for you.</p>
-            
-            <p>If you're the type who can just "figure it out" on your own... skip this. You don't need it.</p>
-            
-            <p>But if you want to feel <strong>100% prepared</strong> walking into your first paid discovery call...</p>
-        </div>
-    </section>
-    
-    <!-- Comparison -->
-    <section class="section" style="padding-top: 0;">
-        <div class="container">
-            <h2 class="section-title">The Challenge <span class="blue">Alone</span> vs. With The <span class="green">Implementation Stack</span></h2>
-            
-            <div class="comparison">
-                <div class="compare-card without">
-                    <h4>❌ Challenge Only</h4>
-                    <ul>
-                        <li><span>✖</span> You know WHAT to do</li>
-                        <li><span>✖</span> You have to create your own scripts</li>
-                        <li><span>✖</span> You have to figure out proposals</li>
-                        <li><span>✖</span> You have to guess at pricing</li>
-                        <li><span>✖</span> You have to write your own emails</li>
-                        <li><span>✖</span> You wing the objection handling</li>
+
+        <!-- The Gap -->
+        <div class="gap-section">
+            <h3>Knowledge Without Tools = Wasted Time</h3>
+            <div class="gap-grid">
+                <div class="gap-col without">
+                    <h4>❌ Without Implementation Stack</h4>
+                    <ul class="gap-list">
+                        <li>Spend hours writing your own scripts</li>
+                        <li>Guess at pricing and proposal structure</li>
+                        <li>Fumble through objection handling</li>
+                        <li>Wonder why prospects aren't saying yes</li>
+                        <li>Start from scratch on every deal</li>
                     </ul>
                 </div>
-                <div class="compare-card with">
+                <div class="gap-col with">
                     <h4>✓ With Implementation Stack</h4>
-                    <ul>
-                        <li><span>✓</span> You know WHAT to do</li>
-                        <li><span>✓</span> Word-for-word scripts ready to use</li>
-                        <li><span>✓</span> Proposal templates for every niche</li>
-                        <li><span>✓</span> Pricing calculator does the math</li>
-                        <li><span>✓</span> Copy-paste email sequences</li>
-                        <li><span>✓</span> Objection cheat sheet in hand</li>
+                    <ul class="gap-list">
+                        <li>Copy-paste proven scripts word-for-word</li>
+                        <li>Use templates that have closed $15K+ deals</li>
+                        <li>Handle any objection with confidence</li>
+                        <li>Follow the exact sequence that works</li>
+                        <li>Reuse everything for every client</li>
                     </ul>
                 </div>
             </div>
         </div>
-    </section>
-    
-    <!-- What's Included -->
-    <section class="section" style="padding-top: 0;">
-        <div class="container">
-            <h2 class="section-title">Everything In The <span class="green">Implementation Stack</span></h2>
+
+        <!-- What's Included -->
+        <div class="included-section">
+            <h2>Everything In The <span style="color: var(--accent-green);">Implementation Stack</span></h2>
             
-            <div class="products">
-                <div class="product-card">
-                    <div class="icon">📝</div>
-                    <h4>Word-for-Word Call Script</h4>
-                    <p>Exactly what to say in the 15-min free call to close the $500 AOF session.</p>
-                    <div class="value">Value: $297</div>
-                </div>
-                <div class="product-card">
-                    <div class="icon">📄</div>
-                    <h4>AOF Proposal Template</h4>
-                    <p>The exact proposal format. Plug in their info, customize, send.</p>
-                    <div class="value">Value: $397</div>
-                </div>
-                <div class="product-card">
-                    <div class="icon">📊</div>
-                    <h4>Pricing Calculator</h4>
-                    <p>Never second-guess your pricing. Input scope, get price.</p>
-                    <div class="value">Value: $197</div>
-                </div>
-                <div class="product-card">
-                    <div class="icon">✉️</div>
-                    <h4>Follow-Up Email Sequences</h4>
-                    <p>5 templates for after every stage. Never wonder what to say.</p>
-                    <div class="value">Value: $197</div>
-                </div>
-                <div class="product-card">
-                    <div class="icon">🎯</div>
-                    <h4>Objection Handling Cheat Sheet</h4>
-                    <p>"Too expensive." "Need to think about it." Handle them all.</p>
-                    <div class="value">Value: $147</div>
-                </div>
-                <div class="product-card">
-                    <div class="icon">📋</div>
-                    <h4>Niche-Specific Scope Templates</h4>
-                    <p>Pre-built for Real Estate, Home Services, Med Spas, Coaches, Local.</p>
-                    <div class="value">Value: $497</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Pricing -->
-    <section class="section" style="padding-top: 0;">
-        <div class="container">
-            <div class="pricing">
-                <div class="label">Total Value:</div>
-                <div class="total-value">$1,732</div>
-                <div class="label">Your One-Time Price Today:</div>
-                <div class="price">$97</div>
-                <div class="note">Added to your order • Instant access</div>
-            </div>
-            
-            <div style="text-align: center;">
-                <a href="upsell-2.html?added=implementation" class="cta-btn">
-                    <span class="main">✓ YES! Add The Implementation Stack — $97</span>
-                </a>
-                
-                <button class="skip-link" onclick="window.location.href='upsell-2.html'">No thanks, I'll create my own scripts and templates →</button>
-            </div>
-            
-            <!-- Timer -->
-            <div class="timer-section">
-                <div class="timer-label">⚡ This offer expires when you leave this page</div>
-                <div class="timer">
-                    <div class="timer-unit">
-                        <div class="timer-val" id="minutes">14</div>
-                        <div class="timer-lbl">Minutes</div>
+            <div class="included-grid">
+                <div class="included-item">
+                    <div class="included-icon">📝</div>
+                    <div class="included-content">
+                        <h4>Word-For-Word $500 Call Script</h4>
+                        <p>The exact script top consultants use. Just read it.</p>
+                        <span class="included-value">Value: $197</span>
                     </div>
-                    <span class="timer-sep">:</span>
-                    <div class="timer-unit">
-                        <div class="timer-val" id="seconds">59</div>
-                        <div class="timer-lbl">Seconds</div>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">📄</div>
+                    <div class="included-content">
+                        <h4>AOF Proposal Template</h4>
+                        <p>Canva + Google Docs template for professional proposals.</p>
+                        <span class="included-value">Value: $297</span>
+                    </div>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">📋</div>
+                    <div class="included-content">
+                        <h4>Scope Document Templates</h4>
+                        <p>Pre-built scope docs for different niches and project types.</p>
+                        <span class="included-value">Value: $197</span>
+                    </div>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">🧮</div>
+                    <div class="included-content">
+                        <h4>Pricing Calculator Spreadsheet</h4>
+                        <p>Know exactly what to charge for any project.</p>
+                        <span class="included-value">Value: $97</span>
+                    </div>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">💬</div>
+                    <div class="included-content">
+                        <h4>Objection Handling Cheat Sheet</h4>
+                        <p>Responses to every objection you'll hear. Tested.</p>
+                        <span class="included-value">Value: $97</span>
+                    </div>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">📧</div>
+                    <div class="included-content">
+                        <h4>Email Follow-Up Sequences</h4>
+                        <p>5-email sequence to close deals after the call.</p>
+                        <span class="included-value">Value: $197</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    
+
+        <!-- Timer -->
+        <div class="timer-section">
+            <div class="timer-label">⚡ This offer expires in:</div>
+            <div class="timer">
+                <div class="timer-unit">
+                    <div class="timer-val" id="minutes">14</div>
+                    <div class="timer-lbl">Min</div>
+                </div>
+                <span class="timer-sep">:</span>
+                <div class="timer-unit">
+                    <div class="timer-val" id="seconds">59</div>
+                    <div class="timer-lbl">Sec</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Price Box -->
+        <div class="price-box">
+            <div class="total-value">Total Value: <span>$1,082</span></div>
+            <div class="price-today">Your Price Today:</div>
+            <div class="price-amount">$97</div>
+            <div class="price-note">One-time payment • Instant access • Lifetime updates</div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <a href="upsell-2.html" class="btn-yes">
+                ✓ YES! Add The Implementation Stack →
+            </a>
+            <a href="upsell-2.html" class="btn-no">
+                No thanks, I'll figure it out myself →
+            </a>
+        </div>
+
+        <!-- Guarantee -->
+        <div class="guarantee">
+            <div class="guarantee-icon">🛡️</div>
+            <p><strong>Same 30-Day Guarantee:</strong> If these tools don't save you at least 20 hours and help you close your first paid call, just let us know and we'll refund this upgrade instantly.</p>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2026 GHL Mastery by RhinoMouse Marketing Inc.</p>
+        <p>© 2026 GHL Mastery by RhinoMouse Marketing Inc. All Rights Reserved.</p>
     </footer>
-    
+
+    <!-- Timer Script -->
     <script>
+        let timeLeft = 15 * 60; // 15 minutes
+        
         function updateTimer() {
-            const m = document.getElementById('minutes');
-            const s = document.getElementById('seconds');
-            let min = parseInt(m.textContent), sec = parseInt(s.textContent);
-            sec--;
-            if (sec < 0) { sec = 59; min--; }
-            if (min < 0) { min = 0; sec = 0; }
-            m.textContent = min.toString().padStart(2, '0');
-            s.textContent = sec.toString().padStart(2, '0');
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            if (timeLeft > 0) {
+                timeLeft--;
+            }
         }
+        
+        updateTimer();
         setInterval(updateTimer, 1000);
     </script>
 </body>

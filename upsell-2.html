@@ -3,258 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One More Thing...</title>
+    <title>Get Your Custom Strategy | GHL Mastery</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0e1018;
+            --primary-bg: #0e1018;
+            --secondary-bg: #1a3aad;
             --accent-blue: #2e5bff;
-            --accent-green: #02b828;
+            --accent-green: #04b828;
             --accent-orange: #f87e00;
-            --accent-red: #cc0000;
+            --accent-red: #e74c3c;
             --text-white: #ffffff;
             --text-light: #e0e0e0;
-            --text-dark: #333;
+            --text-muted: #a0a0a0;
         }
-        
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-dark); color: var(--text-white); line-height: 1.7; }
-        h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 700; }
-        
-        /* Warning Banner */
-        .warning-banner {
-            background: #fff3cd;
-            border-bottom: 4px solid #ffc107;
-            padding: 20px;
-            text-align: center;
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+            min-height: 100vh;
         }
-        
-        .warning-banner h2 {
-            color: #856404;
-            font-size: 18px;
-            margin-bottom: 5px;
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
         }
-        
-        .warning-banner p {
-            color: #856404;
-            font-size: 14px;
-        }
-        
-        /* Test Banner */
-        .test-banner {
-            background: var(--accent-orange);
+
+        /* Warning Header */
+        .warning-header {
+            background: linear-gradient(135deg, var(--accent-orange), #d96800);
             color: white;
             text-align: center;
-            padding: 8px;
-            font-size: 12px;
+            padding: 15px 20px;
+            font-size: 14px;
             font-weight: 600;
         }
-        
-        /* Top Bar */
-        .top-bar {
-            background: white;
-            padding: 12px 20px;
-            text-align: center;
-        }
-        
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            font-size: 22px;
-            color: var(--bg-dark);
-        }
-        
-        .logo span { color: var(--accent-blue); }
-        
-        /* Hero */
-        .hero {
+
+        /* Main Content */
+        .main-content {
             max-width: 800px;
             margin: 0 auto;
             padding: 50px 20px;
             text-align: center;
         }
-        
-        .hero h1 {
-            font-size: 32px;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-        
-        .hero h1 .green { color: var(--accent-green); }
-        .hero h1 .blue { color: var(--accent-blue); }
-        
-        .hero-sub {
-            font-size: 18px;
-            color: var(--text-light);
-            margin-bottom: 30px;
-        }
-        
-        /* Video */
-        .video-wrap {
-            max-width: 650px;
-            margin: 0 auto 30px;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 3px solid var(--accent-blue);
-            position: relative;
-        }
-        
-        .video-placeholder {
-            aspect-ratio: 16/9;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .play-btn {
-            width: 70px;
-            height: 70px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .play-btn::after {
-            content: '';
-            border-left: 20px solid var(--accent-blue);
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
-            margin-left: 5px;
-        }
-        
-        .unmute-overlay {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.85);
-            padding: 12px 18px;
-            border-radius: 8px;
+
+        .pre-head {
+            color: var(--accent-orange);
             font-size: 13px;
-        }
-        
-        .unmute-overlay span:first-child { display: block; margin-bottom: 2px; }
-        .unmute-overlay span:last-child { font-weight: 700; }
-        
-        /* CTA */
-        .cta-btn {
-            display: inline-block;
-            padding: 20px 50px;
-            background: linear-gradient(135deg, var(--accent-green), #05d632);
-            color: white;
-            font-size: 18px;
             font-weight: 700;
-            font-family: 'Poppins', sans-serif;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 8px 30px rgba(2,184,40,0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: none;
-            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
         }
-        
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(2,184,40,0.5);
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            line-height: 1.15;
         }
-        
-        .cta-btn .main { display: block; }
-        .cta-btn .sub { display: block; font-size: 13px; font-weight: 400; opacity: 0.9; margin-top: 3px; }
-        
-        .skip-link {
-            display: block;
-            margin-top: 20px;
-            color: #888;
-            font-size: 14px;
-            text-decoration: underline;
-            cursor: pointer;
-            background: none;
-            border: none;
+
+        h1 .green { color: var(--accent-green); }
+        h1 .blue { color: var(--accent-blue); }
+
+        .subhead {
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        /* Content */
-        .section {
-            padding: 50px 20px;
+
+        /* Prescription Analogy */
+        .analogy-section {
+            background: linear-gradient(135deg, rgba(46, 91, 255, 0.1), rgba(46, 91, 255, 0.05));
+            border: 1px solid rgba(46, 91, 255, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 50px;
+            text-align: left;
         }
-        
-        .container {
-            max-width: 750px;
+
+        .analogy-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .analogy-text {
+            font-size: 17px;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 650px;
             margin: 0 auto;
         }
-        
-        .section-title {
-            font-size: 26px;
-            text-align: center;
-            margin-bottom: 25px;
+
+        .analogy-text strong {
+            color: white;
         }
-        
-        .section-title .blue { color: var(--accent-blue); }
-        .section-title .green { color: var(--accent-green); }
-        
-        /* Story */
-        .story p {
-            font-size: 16px;
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-        
-        .story strong { color: var(--text-white); }
-        
-        .quote-box {
-            background: rgba(46,91,255,0.1);
-            border: 2px solid rgba(46,91,255,0.2);
-            border-radius: 12px;
-            padding: 25px 30px;
-            margin: 30px 0;
-            text-align: center;
-        }
-        
-        .quote-box p {
-            font-size: 20px;
-            font-style: italic;
-            margin: 0;
-            line-height: 1.5;
-        }
-        
-        .question-list {
-            list-style: none;
+
+        .analogy-highlight {
+            background: rgba(248, 126, 0, 0.2);
+            border-left: 4px solid var(--accent-orange);
+            padding: 20px;
             margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
         }
-        
-        .question-list li {
-            font-size: 15px;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        
-        .question-list li:last-child { border-bottom: none; }
-        
-        .question-list .icon { color: var(--accent-green); }
-        
+
         /* What You Get */
-        .get-list {
-            margin: 30px 0;
+        .offer-section {
+            margin-bottom: 50px;
         }
-        
-        .get-item {
-            display: flex;
-            gap: 20px;
-            padding: 25px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
+
+        .offer-section h2 {
+            font-size: 32px;
             margin-bottom: 15px;
-            border: 1px solid rgba(255,255,255,0.05);
         }
-        
-        .get-item .icon {
+
+        .offer-section .sub {
+            color: var(--text-light);
+            margin-bottom: 35px;
+        }
+
+        .offer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: left;
+        }
+
+        @media (max-width: 600px) {
+            .offer-grid { grid-template-columns: 1fr; }
+        }
+
+        .offer-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .offer-icon {
             width: 50px;
             height: 50px;
-            background: var(--accent-blue);
+            background: linear-gradient(135deg, var(--accent-green), #05d632);
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -262,91 +162,101 @@
             font-size: 24px;
             flex-shrink: 0;
         }
-        
-        .get-item h4 {
+
+        .offer-content h4 {
             font-size: 16px;
             margin-bottom: 5px;
         }
-        
-        .get-item p {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-        
-        .get-item .value {
-            color: var(--accent-green);
+
+        .offer-content p {
             font-size: 13px;
-            font-weight: 600;
+            color: var(--text-light);
         }
-        
-        /* VIP Credit */
-        .vip-credit {
-            background: rgba(2,184,40,0.1);
-            border: 2px solid rgba(2,184,40,0.3);
+
+        /* Bonus Banner */
+        .bonus-banner {
+            background: linear-gradient(135deg, var(--accent-green), #05d632);
             border-radius: 12px;
-            padding: 20px 25px;
-            text-align: center;
-            margin: 30px 0;
+            padding: 25px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
-        
-        .vip-credit .label {
-            color: var(--accent-green);
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 8px;
+
+        @media (max-width: 600px) {
+            .bonus-banner { flex-direction: column; text-align: center; }
         }
-        
-        .vip-credit p {
-            font-size: 15px;
-            color: var(--text-light);
-            margin: 0;
+
+        .bonus-icon {
+            font-size: 48px;
         }
-        
-        /* Pricing */
-        .pricing {
-            text-align: center;
-            padding: 40px;
-            background: rgba(46,91,255,0.05);
-            border-radius: 16px;
-            margin: 30px 0;
+
+        .bonus-content h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
         }
-        
-        .pricing .label {
+
+        .bonus-content p {
             font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Price Box */
+        .price-box {
+            background: linear-gradient(135deg, rgba(4,184,40,0.1), rgba(4,184,40,0.05));
+            border: 2px solid var(--accent-green);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .total-value {
+            font-size: 18px;
             color: var(--text-light);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
-        
-        .pricing .old-price {
-            font-size: 20px;
-            color: #888;
+
+        .total-value span {
             text-decoration: line-through;
-            margin-bottom: 5px;
+            color: var(--text-muted);
         }
-        
-        .pricing .price {
-            font-size: 60px;
+
+        .price-today {
+            font-size: 20px;
+            color: var(--text-white);
+            margin-bottom: 15px;
+        }
+
+        .price-amount {
+            font-size: 64px;
             font-weight: 900;
             color: var(--accent-green);
             font-family: 'Poppins', sans-serif;
             line-height: 1;
         }
-        
-        .pricing .note {
+
+        .price-note {
             font-size: 14px;
-            color: var(--text-light);
+            color: var(--text-muted);
             margin-top: 10px;
         }
-        
+
+        .credit-note {
+            background: rgba(46, 91, 255, 0.1);
+            border: 1px solid rgba(46, 91, 255, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
         /* Timer */
         .timer-section {
-            text-align: center;
-            margin: 30px 0;
+            margin-bottom: 40px;
         }
-        
+
         .timer-label {
             color: var(--accent-red);
             font-size: 12px;
@@ -354,17 +264,17 @@
             text-transform: uppercase;
             margin-bottom: 10px;
         }
-        
+
         .timer {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255,0,0,0.1);
-            padding: 15px 25px;
+            background: rgba(231, 76, 60, 0.1);
+            padding: 12px 25px;
             border-radius: 10px;
-            border: 2px solid rgba(255,0,0,0.2);
+            border: 2px solid rgba(231, 76, 60, 0.3);
         }
-        
+
         .timer-unit { text-align: center; }
         .timer-val {
             font-size: 32px;
@@ -373,214 +283,241 @@
             font-family: 'Poppins', sans-serif;
             min-width: 45px;
         }
-        .timer-lbl { font-size: 10px; color: #888; text-transform: uppercase; }
-        .timer-sep { font-size: 28px; color: var(--accent-red); font-weight: 700; margin-bottom: 15px; }
-        
+        .timer-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
+        .timer-sep { font-size: 28px; color: var(--accent-red); font-weight: 700; margin-bottom: 16px; }
+
+        /* CTA Buttons */
+        .cta-section {
+            margin-bottom: 30px;
+        }
+
+        .btn-yes {
+            display: inline-block;
+            width: 100%;
+            max-width: 500px;
+            padding: 22px 40px;
+            background: linear-gradient(135deg, var(--accent-green), #05d632);
+            color: white;
+            font-size: 20px;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(4, 184, 40, 0.4);
+        }
+
+        .btn-no {
+            display: block;
+            color: var(--text-muted);
+            font-size: 14px;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .btn-no:hover {
+            color: var(--text-light);
+        }
+
+        /* Who This Is For */
+        .who-section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .who-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .who-list {
+            list-style: none;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .who-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 15px;
+            color: var(--text-light);
+        }
+
+        .who-list .icon {
+            color: var(--accent-green);
+            font-size: 18px;
+        }
+
         /* Footer */
         .footer {
             text-align: center;
-            padding: 30px 20px;
-            font-size: 11px;
+            padding: 40px 20px;
+            font-size: 12px;
             color: #666;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <!-- Test Banner -->
-    <div class="test-banner">🧪 TEST MODE — Upsell 2 of 2 • Click YES or NO to complete your order</div>
-    
-    <!-- Warning Banner -->
-    <div class="warning-banner">
-        <h2>⚠️ WAIT — One Last Thing Before You Go...</h2>
-        <p>This is the only time you'll see this offer. Please read it carefully.</p>
+    <!-- Warning Header -->
+    <div class="warning-header">
+        <strong>⚡ LAST STEP:</strong> One more upgrade available before you access your training...
     </div>
-    
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="logo">GHL <span>Mastery</span></div>
-    </div>
-    
-    <!-- Hero -->
-    <section class="hero">
-        <h1>What If You Could <span class="green">Ask Questions</span> About Everything You Just Bought?</h1>
-        <p class="hero-sub">A personal strategy call where we map out <strong>YOUR specific path</strong> to booking paid discovery calls.</p>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <p class="pre-head">For Serious Agency Owners Only</p>
         
-        <div class="video-wrap">
-            <div class="video-placeholder">
-                <div class="play-btn"></div>
-            </div>
-            <div class="unmute-overlay">
-                <span>🔇 Your Video Is Playing</span>
-                <span>Click To Unmute</span>
-            </div>
-        </div>
+        <h1>Want Us To Map Out <span class="blue">YOUR</span> First <span class="green">$500 Call</span> Strategy?</h1>
         
-        <a href="thank-you.html?added=accelerator" class="cta-btn">
-            <span class="main">✓ YES! I Want A Personal Strategy Call</span>
-            <span class="sub">Add to my order for just $197</span>
-        </a>
-        
-        <button class="skip-link" onclick="window.location.href='thank-you.html'">No thanks, I'll figure it out on my own →</button>
-    </section>
-    
-    <!-- The Problem -->
-    <section class="section">
-        <div class="container story">
-            <p>You've got the challenge. Maybe the implementation stack too.</p>
-            
-            <p>But here's the thing...</p>
-            
-            <p><strong>Your situation is unique.</strong></p>
-            
-            <p>Your niche. Your experience level. Your current clients. Your comfort with sales. The prospects you're talking to. Your pricing. Your positioning.</p>
-            
-            <p>Generic training answers the question <em>"What should I do?"</em></p>
-            
-            <p>But it doesn't answer <em>"What should <strong>I</strong> do, given <strong>my</strong> situation?"</em></p>
-            
-            <div class="quote-box">
-                <p>"Would you take someone else's prescription medication without knowing what it was?"</p>
-            </div>
-            
-            <p>Of course not. That would be dangerous.</p>
-            
-            <p>Yet that's exactly what most agency owners do — they follow generic advice designed for someone else's situation and wonder why it doesn't work.</p>
-        </div>
-    </section>
-    
-    <!-- Questions You Might Have -->
-    <section class="section" style="padding-top: 0;">
-        <div class="container">
-            <h2 class="section-title">Questions You Might Have <span class="blue">Right Now</span></h2>
-            
-            <ul class="question-list">
-                <li><span class="icon">❓</span><span>"How do I position AOF for <strong>my specific niche</strong>?"</span></li>
-                <li><span class="icon">❓</span><span>"What should I charge given my experience level?"</span></li>
-                <li><span class="icon">❓</span><span>"How do I transition my <strong>current clients</strong> to this model?"</span></li>
-                <li><span class="icon">❓</span><span>"What do I say if they ask about my track record?"</span></li>
-                <li><span class="icon">❓</span><span>"How do I find prospects who will actually pay for discovery?"</span></li>
-                <li><span class="icon">❓</span><span>"What if my market is different from the examples?"</span></li>
-            </ul>
-            
-            <p style="text-align: center; font-size: 17px; margin-top: 30px;">
-                <strong>Imagine having all these questions answered by someone who's done it.</strong>
+        <p class="subhead">Generic advice gets generic results. Get a <strong>personalized game plan</strong> built specifically for your niche, your market, and your goals.</p>
+
+        <!-- Prescription Analogy -->
+        <div class="analogy-section">
+            <h3>Would You Take Someone Else's Prescription?</h3>
+            <p class="analogy-text">
+                Think about it: You wouldn't walk into a pharmacy and ask for "whatever worked for the last guy," right?
+                <br><br>
+                <strong>Your business is different.</strong> Your niche has unique pain points. Your ideal clients have specific objections. Your market has opportunities that generic training can't see.
             </p>
+            <div class="analogy-highlight">
+                "The roadmap shows you the system. But a strategy session shows you exactly how to apply it to YOUR situation — so you're not guessing, you're executing."
+            </div>
         </div>
-    </section>
-    
-    <!-- What You Get -->
-    <section class="section" style="padding-top: 0;">
-        <div class="container">
-            <h2 class="section-title">What You Get With The <span class="green">Strategy Session</span></h2>
+
+        <!-- What You Get -->
+        <div class="offer-section">
+            <h2>What You Get In Your <span style="color: var(--accent-green);">Strategy Session</span></h2>
+            <p class="sub">A 30-minute 1-on-1 call with our team, focused entirely on YOUR business.</p>
             
-            <div class="get-list">
-                <div class="get-item">
-                    <div class="icon">📞</div>
-                    <div>
-                        <h4>45-Minute 1-on-1 Strategy Call</h4>
-                        <p>Get on a call with our team. We'll analyze your specific situation and create a custom game plan for you.</p>
-                        <div class="value">Value: $500</div>
-                    </div>
-                </div>
-                
-                <div class="get-item">
-                    <div class="icon">🎯</div>
-                    <div>
+            <div class="offer-grid">
+                <div class="offer-item">
+                    <div class="offer-icon">🎯</div>
+                    <div class="offer-content">
                         <h4>Custom Niche Assessment</h4>
-                        <p>We'll research your specific market and identify the highest-value problems you can solve with AOF.</p>
-                        <div class="value">Value: $297</div>
+                        <p>We'll analyze your niche and identify the highest-value AOF opportunities.</p>
                     </div>
                 </div>
-                
-                <div class="get-item">
-                    <div class="icon">📝</div>
-                    <div>
-                        <h4>Your Personal AOF Script (Customized)</h4>
-                        <p>We'll take the template and customize it for YOUR niche, YOUR language, YOUR ideal client.</p>
-                        <div class="value">Value: $397</div>
+                <div class="offer-item">
+                    <div class="offer-icon">👥</div>
+                    <div class="offer-content">
+                        <h4>Prospect Identification</h4>
+                        <p>We'll help you identify your first 5 ideal prospects to reach out to this week.</p>
                     </div>
                 </div>
-                
-                <div class="get-item">
-                    <div class="icon">📋</div>
-                    <div>
+                <div class="offer-item">
+                    <div class="offer-icon">📝</div>
+                    <div class="offer-content">
+                        <h4>Your AOF Script Customized</h4>
+                        <p>We'll tweak the $500 call script specifically for your niche and offer.</p>
+                    </div>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-icon">📋</div>
+                    <div class="offer-content">
                         <h4>30-Day Action Plan</h4>
-                        <p>Walk away with a clear roadmap: exactly what to do in week 1, 2, 3, and 4.</p>
-                        <div class="value">Value: $197</div>
-                    </div>
-                </div>
-                
-                <div class="get-item">
-                    <div class="icon">👥</div>
-                    <div>
-                        <h4>BONUS: 30 Days VIP Community Access</h4>
-                        <p>Preview our VIP Mastery community. Ask questions, get feedback, connect with 7-figure consultants.</p>
-                        <div class="value">Value: $165</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="vip-credit">
-                <div class="label">💰 VIP CREDIT</div>
-                <p>If you join VIP Mastery within 30 days, this $197 gets credited toward your first month.</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Pricing -->
-    <section class="section" style="padding-top: 0;">
-        <div class="container">
-            <div class="pricing">
-                <div class="label">Total Value:</div>
-                <div class="old-price">$1,556</div>
-                <div class="label">Your One-Time Price:</div>
-                <div class="price">$197</div>
-                <div class="note">Includes strategy call booking • Credits toward VIP</div>
-            </div>
-            
-            <div style="text-align: center;">
-                <a href="thank-you.html?added=accelerator" class="cta-btn">
-                    <span class="main">✓ YES! I Want A Personal Strategy Call — $197</span>
-                </a>
-                
-                <button class="skip-link" onclick="window.location.href='thank-you.html'">No thanks, I'll figure out my own strategy →</button>
-            </div>
-            
-            <!-- Timer -->
-            <div class="timer-section">
-                <div class="timer-label">⚡ This offer expires when you leave this page</div>
-                <div class="timer">
-                    <div class="timer-unit">
-                        <div class="timer-val" id="minutes">09</div>
-                        <div class="timer-lbl">Minutes</div>
-                    </div>
-                    <span class="timer-sep">:</span>
-                    <div class="timer-unit">
-                        <div class="timer-val" id="seconds">59</div>
-                        <div class="timer-lbl">Seconds</div>
+                        <p>Walk away with a clear, week-by-week roadmap to your first paid call.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    
+
+        <!-- Bonus -->
+        <div class="bonus-banner">
+            <div class="bonus-icon">🎁</div>
+            <div class="bonus-content">
+                <h4>BONUS: 30 Days In VIP Community</h4>
+                <p>Get a full month of access to our private community where $10K+ deals are closed weekly. Ask questions, get feedback, see what's working NOW.</p>
+            </div>
+        </div>
+
+        <!-- Who This Is For -->
+        <div class="who-section">
+            <h3>This Is For You If...</h3>
+            <ul class="who-list">
+                <li><span class="icon">✓</span> You want to skip the trial-and-error and get it right the first time</li>
+                <li><span class="icon">✓</span> You have a specific niche but aren't sure how to position AOF for it</li>
+                <li><span class="icon">✓</span> You want personalized feedback before you reach out to prospects</li>
+                <li><span class="icon">✓</span> You're serious about building a real consulting business, not just "trying it out"</li>
+            </ul>
+        </div>
+
+        <!-- Timer -->
+        <div class="timer-section">
+            <div class="timer-label">⚡ This offer expires in:</div>
+            <div class="timer">
+                <div class="timer-unit">
+                    <div class="timer-val" id="minutes">09</div>
+                    <div class="timer-lbl">Min</div>
+                </div>
+                <span class="timer-sep">:</span>
+                <div class="timer-unit">
+                    <div class="timer-val" id="seconds">59</div>
+                    <div class="timer-lbl">Sec</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Price Box -->
+        <div class="price-box">
+            <div class="total-value">Total Value: <span>$997+</span></div>
+            <div class="price-today">Your Investment Today:</div>
+            <div class="price-amount">$297</div>
+            <div class="price-note">One-time • Includes 30-day VIP access • Personalized strategy</div>
+            <div class="credit-note">
+                💡 <strong>VIP Credit:</strong> If you upgrade to VIP Mastery within 30 days, this $297 gets credited toward your first month.
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <a href="thank-you.html" class="btn-yes">
+                ✓ YES! I Want My Custom Strategy →
+            </a>
+            <a href="thank-you.html" class="btn-no">
+                No thanks, I'll figure it out on my own →
+            </a>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2026 GHL Mastery by RhinoMouse Marketing Inc.</p>
+        <p>© 2026 GHL Mastery by RhinoMouse Marketing Inc. All Rights Reserved.</p>
     </footer>
-    
+
+    <!-- Timer Script -->
     <script>
+        let timeLeft = 10 * 60; // 10 minutes
+        
         function updateTimer() {
-            const m = document.getElementById('minutes');
-            const s = document.getElementById('seconds');
-            let min = parseInt(m.textContent), sec = parseInt(s.textContent);
-            sec--;
-            if (sec < 0) { sec = 59; min--; }
-            if (min < 0) { min = 0; sec = 0; }
-            m.textContent = min.toString().padStart(2, '0');
-            s.textContent = sec.toString().padStart(2, '0');
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            if (timeLeft > 0) {
+                timeLeft--;
+            }
         }
+        
+        updateTimer();
         setInterval(updateTimer, 1000);
     </script>
 </body>
