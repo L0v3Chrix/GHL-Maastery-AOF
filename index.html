@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AOF Framework - Stop Pitching, Start Prescribing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0e1018;
+            --secondary-bg: #1a3aad;
+            --accent-blue: #2e5bff;
+            --accent-green: #04b828;
+            --accent-orange: #f87e00;
+            --text-white: #ffffff;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --border-blue: rgba(46, 91, 255, 0.3);
+            --gradient-bg: linear-gradient(296deg, #1a3aad 0%, #0e1018 64%, #0e1018 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gradient-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--text-white);
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .top-bar-content {
+            max-width: 1170px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            color: #0e1018;
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1170px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (max-width: 960px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pre-headline {
+            font-size: 14px;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .hero-content h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--text-white);
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent-blue);
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--accent-green);
+        }
+
+        .hero-subhead {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .hero-subhead strong {
+            color: var(--text-white);
+        }
+
+        /* Video Container */
+        .video-container {
+            background: #000;
+            border-radius: 12px;
+            aspect-ratio: 16/9;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid var(--accent-blue);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .play-button::after {
+            content: '';
+            border-left: 25px solid var(--accent-blue);
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            margin-left: 5px;
+        }
+
+        /* Pain Points */
+        .pain-points {
+            background: rgba(255,68,68,0.1);
+            border: 1px solid rgba(255,68,68,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .pain-title {
+            font-size: 14px;
+            color: #ff6b6b;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin: 0;
+        }
+
+        .bullet-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: var(--text-light);
+        }
+
+        .bullet-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .bullet-icon {
+            font-size: 16px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .bullet-icon.red { color: #ff4444; }
+        .bullet-icon.green { color: #04b828; }
+
+        /* Solution Points */
+        .solution-points {
+            background: rgba(4,184,40,0.1);
+            border: 1px solid rgba(4,184,40,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .solution-title {
+            font-size: 14px;
+            color: var(--accent-green);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Order Form */
+        .order-form-container {
+            background: var(--text-white);
+            border-radius: 16px;
+            border: 3px solid var(--accent-blue);
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(46, 91, 255, 0.3);
+        }
+
+        .form-header {
+            background: var(--accent-blue);
+            color: white;
+            text-align: center;
+            padding: 18px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-body {
+            padding: 25px;
+            color: #333;
+        }
+
+        .timer-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .timer-label-top {
+            font-size: 12px;
+            color: #e74c3c;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timer {
+            display: inline-flex;
+            gap: 8px;
+            background: #fff5f5;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 2px solid #ffebeb;
+        }
+
+        .timer-unit {
+            text-align: center;
+            min-width: 50px;
+        }
+
+        .timer-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: #e74c3c;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .timer-label {
+            font-size: 10px;
+            color: #999;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .timer-separator {
+            font-size: 28px;
+            font-weight: 800;
+            color: #e74c3c;
+            line-height: 1;
+        }
+
+        .form-title {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .price-display {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8fff8 0%, #e8ffe8 100%);
+            border-radius: 12px;
+            border: 2px solid rgba(4,184,40,0.2);
+        }
+
+        .price-original {
+            font-size: 20px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .price-current {
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--accent-green);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1;
+        }
+
+        .price-note {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .form-steps {
+            display: flex;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        .form-step {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #999;
+            transition: all 0.3s;
+        }
+
+        .form-step.active {
+            background: white;
+            color: #333;
+            font-size: 14px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-step-number {
+            display: block;
+            font-size: 10px;
+            color: #bbb;
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+
+        .form-step.active .form-step-number {
+            color: var(--accent-blue);
+        }
+
+        .form-divider {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            margin: auto -16px;
+            z-index: 1;
+            position: relative;
+            box-shadow: 0 3px 10px rgba(248, 126, 0, 0.4);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e8e8e8;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(46, 91, 255, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #aaa;
+        }
+
+        /* Order Bump */
+        .order-bump {
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            background: linear-gradient(135deg, #f8fff8 0%, #efffef 100%);
+            position: relative;
+        }
+
+        .order-bump::before {
+            content: "🔥 ONE-TIME OFFER";
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: var(--accent-green);
+            color: white;
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .bump-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            margin-top: 5px;
+        }
+
+        .bump-checkbox {
+            width: 22px;
+            height: 22px;
+            accent-color: var(--accent-green);
+            margin-top: 2px;
+        }
+
+        .bump-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .bump-price {
+            color: var(--accent-green);
+            font-weight: 800;
+        }
+
+        .bump-description {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+            margin-left: 34px;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--accent-orange) 0%, #ff9500 100%);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 18px;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 30px rgba(248, 126, 0, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(248, 126, 0, 0.5);
+        }
+
+        .submit-subtext {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            margin-top: 12px;
+        }
+
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .security-badge {
+            background: #f5f5f5;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-dark {
+            background: rgba(0,0,0,0.4);
+        }
+
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title span {
+            color: var(--accent-blue);
+        }
+
+        .section-title .green {
+            color: var(--accent-green);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* The Shift Box */
+        .shift-box {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        @media (max-width: 700px) {
+            .shift-box {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .shift-from, .shift-to {
+            padding: 30px;
+            border-radius: 16px;
+        }
+
+        .shift-from {
+            background: rgba(255,68,68,0.1);
+            border: 2px solid rgba(255,68,68,0.3);
+        }
+
+        .shift-to {
+            background: rgba(4,184,40,0.1);
+            border: 2px solid rgba(4,184,40,0.3);
+        }
+
+        .shift-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .shift-from .shift-label { color: #ff6b6b; }
+        .shift-to .shift-label { color: var(--accent-green); }
+
+        .shift-text {
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .shift-arrow {
+            font-size: 40px;
+            color: var(--accent-blue);
+        }
+
+        /* Testimonial Cards */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .testimonial-result {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--accent-green);
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--text-white);
+            font-size: 15px;
+        }
+
+        .testimonial-role {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* What's Included */
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .included-item {
+            display: flex;
+            gap: 15px;
+            padding: 25px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .included-item:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.06);
+        }
+
+        .included-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, #4d7aff 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .included-content h3 {
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+
+        .included-content p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .included-value {
+            color: var(--accent-green);
+            font-size: 13px;
+            font-weight: 700;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
+        /* AOF Framework Section */
+        .aof-framework {
+            background: rgba(46, 91, 255, 0.1);
+            border: 2px solid rgba(46, 91, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .aof-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .aof-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .aof-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .aof-step {
+            text-align: center;
+            padding: 25px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+        }
+
+        .aof-step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0 auto 15px;
+        }
+
+        .aof-step-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .aof-step-price {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent-green);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .aof-step-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(46, 91, 255, 0.15) 100%);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 22px 70px;
+            background: linear-gradient(135deg, var(--accent-green) 0%, #05d632 100%);
+            color: white;
+            font-size: 20px;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 40px rgba(4, 184, 40, 0.4);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(4, 184, 40, 0.5);
+        }
+
+        .cta-subtext {
+            margin-top: 20px;
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        /* Guarantee */
+        .guarantee-box {
+            max-width: 750px;
+            margin: 50px auto;
+            padding: 40px;
+            background: rgba(4,184,40,0.08);
+            border: 2px solid var(--accent-green);
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .guarantee-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .guarantee-title {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: var(--accent-green);
+        }
+
+        .guarantee-text {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero-content h1 {
+                font-size: 26px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+            
+            .price-current {
+                font-size: 42px;
+            }
+
+            .aof-step-price {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="logo">GHL <span>Mastery</span></div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid">
+            <!-- Left Column - Content -->
+            <div class="hero-content">
+                <p class="pre-headline">For HighLevel Agency Owners Who Hate Feeling "Salesy"</p>
+                
+                <h1><span>Stop Pitching.</span> Start <span class="highlight">Prescribing.</span></h1>
+                
+                <p class="hero-subhead">The AOF Framework turns 15-minute discovery calls into <strong>$500 paid consultations</strong> — so you get paid to sell, close higher-ticket deals, and never chase prospects again.</p>
+
+                <!-- Video -->
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <div class="play-button"></div>
+                    </div>
+                </div>
+
+                <!-- Pain Points -->
+                <div class="pain-points">
+                    <p class="pain-title">Sound Familiar?</p>
+                    <ul class="bullet-list">
+                        <li>
+                            <span class="bullet-icon red">✖</span>
+                            <span>Giving away <strong>free discovery calls</strong> that go nowhere</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon red">✖</span>
+                            <span>Chasing prospects who ghost you after the proposal</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon red">✖</span>
+                            <span>Feeling like a <strong>"software vendor"</strong> instead of a consultant</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon red">✖</span>
+                            <span>Struggling to justify prices above $500/month</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon red">✖</span>
+                            <span>Doing ALL the tech work yourself with no margin left</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Solution Points -->
+                <div class="solution-points">
+                    <p class="solution-title">What If Instead You Could...</p>
+                    <ul class="bullet-list">
+                        <li>
+                            <span class="bullet-icon green">✓</span>
+                            <span>Get <strong>paid $500</strong> just to have a discovery call</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon green">✓</span>
+                            <span>Position yourself as a <strong>systems consultant</strong>, not a tech vendor</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon green">✓</span>
+                            <span>Close <strong>$5K-$25K system builds</strong> with confidence</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon green">✓</span>
+                            <span>Have prospects <strong>chase YOU</strong> instead of the other way around</span>
+                        </li>
+                        <li>
+                            <span class="bullet-icon green">✓</span>
+                            <span>Scale without doing all the fulfillment yourself</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Column - Order Form -->
+            <div class="order-form-container">
+                <div class="form-header">
+                    🎯 GET THE AOF FRAMEWORK TODAY 🎯
+                </div>
+                <div class="form-body">
+                    <!-- Timer -->
+                    <div class="timer-container">
+                        <p class="timer-label-top">⚡ Special Launch Pricing Ends In:</p>
+                        <div class="timer">
+                            <div class="timer-unit">
+                                <div class="timer-value" id="hours">00</div>
+                                <div class="timer-label">Hours</div>
+                            </div>
+                            <div class="timer-separator">:</div>
+                            <div class="timer-unit">
+                                <div class="timer-value" id="minutes">47</div>
+                                <div class="timer-label">Minutes</div>
+                            </div>
+                            <div class="timer-separator">:</div>
+                            <div class="timer-unit">
+                                <div class="timer-value" id="seconds">23</div>
+                                <div class="timer-label">Seconds</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="price-display">
+                        <div class="price-original">$197</div>
+                        <div class="price-current">$47</div>
+                        <div class="price-note">One-time payment • Instant access</div>
+                    </div>
+
+                    <!-- Form Steps -->
+                    <div class="form-steps">
+                        <div class="form-step active">
+                            <span class="form-step-number">STEP 1</span>
+                            Your Info
+                        </div>
+                        <div class="form-divider">→</div>
+                        <div class="form-step">
+                            <span class="form-step-number">STEP 2</span>
+                            Payment
+                        </div>
+                    </div>
+
+                    <!-- Form Fields -->
+                    <form>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter your full name...">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="Enter your best email...">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="Enter your phone number...">
+                        </div>
+
+                        <!-- Order Bump -->
+                        <div class="order-bump">
+                            <div class="bump-header">
+                                <input type="checkbox" class="bump-checkbox" id="bump">
+                                <label class="bump-title" for="bump">YES! Add the <span class="bump-price">AOF Implementation Kit (+$97)</span></label>
+                            </div>
+                            <p class="bump-description">Get plug-and-play templates, scripts, and proposal docs to implement AOF in your very first client meeting. Includes the exact frameworks our VIP members use to close $10K+ deals.</p>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" class="submit-btn">
+                            Get Instant Access →
+                        </button>
+                        <p class="submit-subtext">🔒 Secure checkout • Instant access • 30-day guarantee</p>
+
+                        <!-- Security -->
+                        <div class="security-badges">
+                            <div class="security-badge">🔒 256-bit SSL</div>
+                            <div class="security-badge">💳 Secure Payment</div>
+                            <div class="security-badge">✓ Money-Back Guarantee</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Shift Section -->
+    <section class="section-dark">
+        <div class="content-section">
+            <h2 class="section-title">The <span>Identity Shift</span> That Changes Everything</h2>
+            <p class="section-subtitle">Stop being a "software vendor" competing on price. Start being the consultant who gets paid to diagnose problems.</p>
+
+            <div class="shift-box">
+                <div class="shift-from">
+                    <p class="shift-label">❌ Before AOF</p>
+                    <p class="shift-text">"I sell HighLevel setups and automations"</p>
+                </div>
+                <div class="shift-arrow">→</div>
+                <div class="shift-to">
+                    <p class="shift-label">✓ After AOF</p>
+                    <p class="shift-text">"I diagnose operational problems and prescribe systems"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section>
+        <div class="content-section">
+            <h2 class="section-title">Real Results From <span class="green">AOF Users</span></h2>
+            <p class="section-subtitle">Agency owners just like you are transforming their businesses with the AOF Framework.</p>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-result">$64,000 in 6 weeks</p>
+                    <p class="testimonial-text">"Before AOF, I was giving away free audits hoping someone would hire me. Now prospects pay me $500 just to tell them what's wrong. The positioning shift is everything."</p>
+                    <p class="testimonial-author">Nick D.</p>
+                    <p class="testimonial-role">Agency Owner</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-result">$10K/month selling docs</p>
+                    <p class="testimonial-text">"I used to think I needed to build everything myself. AOF taught me to sell the diagnosis, then hand off the build. My margins went from 20% to 60%."</p>
+                    <p class="testimonial-author">KP</p>
+                    <p class="testimonial-role">Systems Consultant</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-result">First $15K deal closed</p>
+                    <p class="testimonial-text">"The reframe of 'that's a $360K/year problem' completely changed how prospects see my value. They stopped negotiating and started asking how fast we could start."</p>
+                    <p class="testimonial-author">Marcus T.</p>
+                    <p class="testimonial-role">GHL Agency Owner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AOF Framework Section -->
+    <section class="section-dark">
+        <div class="content-section">
+            <div class="aof-framework">
+                <h2 class="aof-title">The AOF Framework</h2>
+                <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px;">Assessment → Operations → Framework: The three-step system for closing high-ticket GHL deals</p>
+                
+                <div class="aof-steps">
+                    <div class="aof-step">
+                        <div class="aof-step-number">A</div>
+                        <p class="aof-step-title">Assessment Call</p>
+                        <p class="aof-step-price">$500</p>
+                        <p class="aof-step-desc">Get paid to diagnose. Uncover operational pain points in a 15-minute paid discovery call.</p>
+                    </div>
+                    <div class="aof-step">
+                        <div class="aof-step-number">O</div>
+                        <p class="aof-step-title">Operations Map</p>
+                        <p class="aof-step-price">$2,500</p>
+                        <p class="aof-step-desc">Scope the solution. Use proven templates to detail the system build with confidence.</p>
+                    </div>
+                    <div class="aof-step">
+                        <div class="aof-step-number">F</div>
+                        <p class="aof-step-title">Framework Delivery</p>
+                        <p class="aof-step-price">$10K+</p>
+                        <p class="aof-step-desc">Deliver the system. Execute the build (or hand off to your team) and collect your fee.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section>
+        <div class="content-section">
+            <h2 class="section-title">Everything You Get <span>Today</span></h2>
+            <p class="section-subtitle">The complete system for transforming from vendor to consultant.</p>
+
+            <div class="included-grid">
+                <div class="included-item">
+                    <div class="included-icon">🎯</div>
+                    <div class="included-content">
+                        <h3>The AOF Method Training</h3>
+                        <p>2-hour deep dive into the psychology and positioning behind getting paid to sell. The McDonald's vs. fine dining framework that changes everything.</p>
+                        <span class="included-value">Value: $497</span>
+                    </div>
+                </div>
+
+                <div class="included-item">
+                    <div class="included-icon">💬</div>
+                    <div class="included-content">
+                        <h3>The $500 Discovery Script</h3>
+                        <p>Word-for-word script for positioning and closing paid assessment calls. Handle every objection with confidence.</p>
+                        <span class="included-value">Value: $297</span>
+                    </div>
+                </div>
+
+                <div class="included-item">
+                    <div class="included-icon">📋</div>
+                    <div class="included-content">
+                        <h3>AOF Scoping Templates</h3>
+                        <p>Plug-and-play proposal and scoping documents for every niche. Look like a seasoned pro from day one.</p>
+                        <span class="included-value">Value: $397</span>
+                    </div>
+                </div>
+
+                <div class="included-item">
+                    <div class="included-icon">🧮</div>
+                    <div class="included-content">
+                        <h3>The Problem Quantifier</h3>
+                        <p>The exact framework to turn a "$30K/month problem" into a "$360K/year emergency." Make price irrelevant.</p>
+                        <span class="included-value">Value: $197</span>
+                    </div>
+                </div>
+
+                <div class="included-item">
+                    <div class="included-icon">🎬</div>
+                    <div class="included-content">
+                        <h3>Live Call Recordings</h3>
+                        <p>Watch real AOF calls in action. See exactly how top consultants position, handle objections, and close.</p>
+                        <span class="included-value">Value: $497</span>
+                    </div>
+                </div>
+
+                <div class="included-item">
+                    <div class="included-icon">👥</div>
+                    <div class="included-content">
+                        <h3>GHL Mastery Community</h3>
+                        <p>Join thousands of GHL professionals sharing wins, strategies, and support. Network with 7-figure consultants.</p>
+                        <span class="included-value">Value: Priceless</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section>
+        <div class="content-section">
+            <div class="guarantee-box">
+                <div class="guarantee-icon">🛡️</div>
+                <h3 class="guarantee-title">The "First $500" Guarantee</h3>
+                <p class="guarantee-text">Use the AOF Framework to book your first $500 paid discovery call within 30 days. If you implement the system, reach out to prospects, and don't book a single paid call, we'll personally review your approach and help you fix it — or give you a full refund. We're that confident this works.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section">
+        <h2 class="section-title" style="margin-bottom: 15px;">Ready to <span class="green">Stop Pitching</span> and Start <span>Prescribing?</span></h2>
+        <p style="max-width: 650px; margin: 0 auto 35px; color: var(--text-muted); font-size: 17px;">Join hundreds of GHL agency owners who are closing higher-ticket deals with less effort using the AOF Framework.</p>
+        
+        <a href="#" class="cta-btn">Get The AOF Framework — $47 →</a>
+        <p class="cta-subtext">🔒 Secure checkout • Instant access • 30-day guarantee</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Copyright © 2026 | GHL Mastery by RhinoMouse Marketing Inc. | All Rights Reserved</p>
+        <p>We don't believe in get-rich-quick programs. We believe in hard work, adding value and serving others. Results vary based on effort and implementation. This is not a guarantee of income.</p>
+        <p>NOT FACEBOOK™: This site is not a part of the Facebook™ website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook™ in any way. FACEBOOK™ is a trademark of FACEBOOK™, Inc.</p>
+    </footer>
+
+    <!-- Timer Script -->
+    <script>
+        function updateTimer() {
+            const hours = document.getElementById('hours');
+            const minutes = document.getElementById('minutes');
+            const seconds = document.getElementById('seconds');
+            
+            let h = parseInt(hours.textContent);
+            let m = parseInt(minutes.textContent);
+            let s = parseInt(seconds.textContent);
+            
+            s--;
+            if (s < 0) {
+                s = 59;
+                m--;
+                if (m < 0) {
+                    m = 59;
+                    h--;
+                    if (h < 0) {
+                        h = 0; m = 0; s = 0;
+                    }
+                }
+            }
+            
+            hours.textContent = h.toString().padStart(2, '0');
+            minutes.textContent = m.toString().padStart(2, '0');
+            seconds.textContent = s.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
