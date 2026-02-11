@@ -1,48 +1,76 @@
-# GHL Mastery AOF Framework - Sales Page
+# GHL Mastery AOF Funnel
 
-Sales page scaffold for the AOF (Assessment-Operations-Framework) offer.
+Complete 4-page sales funnel for the AOF (Assessment-Operations-Framework) offer.
 
-## The Offer Stack
+## Funnel Structure
 
-| Tier | Offer | Price | Outcome |
-|------|-------|-------|---------|
-| Lead Magnet | The $500 Discovery Call Script | Free | See the concept |
-| Front-End | Your First Paid Call Challenge | $47 | Book 1 paid $500 call this week |
-| Core | Full AOF System | $197 | Close $5K-$25K builds consistently |
-| Backend | VIP Mastery | $497/mo | Scale without doing the tech work |
+| Page | File | Offer | Price |
+|------|------|-------|-------|
+| 1 | `index.html` | AOF Framework Training | $47 |
+| 2 | `upsell-1.html` | Implementation Stack | +$97 |
+| 3 | `upsell-2.html` | Accelerator + Strategy Session | +$297 |
+| 4 | `thank-you.html` | Order Confirmation + VIP Teaser | — |
 
-## The AOF Model
+## Test Mode
 
-What this teaches users to sell:
+All pages include a **TEST MODE** banner. Forms submit to the next page in the sequence so you can click through the entire funnel.
 
-- **Assessment Call:** $500 - Get paid to diagnose
-- **Operations Mapping:** $2,500 - Scope the build
-- **Framework Delivery:** $10K+ - Execute and deliver
+### Test Flow
+1. Start at `index.html` (front-end offer)
+2. Fill sample data, click "Get Instant Access"
+3. Lands on `upsell-1.html` — click YES or NO
+4. Lands on `upsell-2.html` — click YES or NO
+5. Lands on `thank-you.html` — order complete
 
-## Key Messaging
-
-**Pre-headline:** For HighLevel Agency Owners Who Hate Feeling "Salesy"
-
-**Headline:** Stop Pitching. Start Prescribing.
-
-**Subhead:** The AOF Framework turns 15-minute discovery calls into $500 paid consultations.
-
-## Files
-
-- `index.html` - Main sales page (self-contained HTML/CSS/JS)
+The thank-you page dynamically shows what was "purchased" based on URL params.
 
 ## Local Development
 
 ```bash
+cd aof-repo
 python3 -m http.server 8080
 # Visit http://localhost:8080
 ```
 
-## Notes
+## The AOF Process (Corrected)
 
-- Scaffolded from PaidCreators funnel structure
-- Adapted for GHL Mastery AOF positioning
-- Ready for content refinement and GHL integration
+```
+FREE 15-min Call → Sell the $500 AOF Call
+        ↓
+$500 AOF Call (90 minutes, paid diagnostic)
+        ↓
+3-5 business days → Full Project Scope PDF
+        ↓
+Agency chooses: DIY with scope OR partner with VIP team ($497/mo)
+```
+
+## Files
+
+```
+aof-repo/
+├── index.html          # Page 1: Front-end ($47)
+├── upsell-1.html       # Page 2: Implementation Stack ($97)
+├── upsell-2.html       # Page 3: Accelerator ($297)
+├── thank-you.html      # Page 4: Confirmation + VIP
+├── css/
+│   └── styles.css      # Shared stylesheet
+└── README.md           # This file
+```
+
+## Design Notes
+
+- Dark gradient background (#0e1018 → #1a3aad)
+- Poppins for headlines, Inter for body
+- Green (#04b828) for CTAs and success states
+- Orange (#f87e00) for secondary CTAs and urgency
+- Clean bullet points (no colored boxes)
+- Modeled after PaidCreators funnel structure
+
+## Brand
+
+**GHL Mastery** by RhinoMouse Marketing Inc.
+- Owners: Adam McInnes & Brendan Barth
+- VIP: $497/month with white-label build team
 
 ---
 
